@@ -117,7 +117,7 @@ function renderRound(){
   bindSwipe($("#card"));
   $("#endR").onclick=()=>{ round=null; AUD.pause(); go("home"); };
 }
-/* Wischen: vorne in jede Richtung = aufdecken, hinten rechts = gewusst, links = nicht gewusst. Tippen vorne = aufdecken. */
+/* Wischen: vorne in jede Richtung = aufdecken, hinten rechts = gewusst, links = nicht gewusst. Tippen dreht die Karte hin und her. */
 function bindSwipe(el){
   let x0=null, y0=0, dx=0;
   el.addEventListener("touchstart",e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; dx=0; el.style.transition="none"; },{passive:true});
@@ -126,7 +126,7 @@ function bindSwipe(el){
   el.addEventListener("touchend",()=>{ if(x0===null) return; x0=null; el.style.transition=""; el.style.transform=""; delete el.dataset.sw;
     if(Math.abs(dx)<70) return;
     if(!round.flip) flipCard(); else grade(dx>0?3:1); });
-  el.addEventListener("click",e=>{ if(!round.flip&&Math.abs(dx)<10&&!e.target.closest("button")) flipCard(); });
+  el.addEventListener("click",e=>{ if(Math.abs(dx)>=10||e.target.closest("button")) return; round.flip=!round.flip; renderRound(); });
 }
 function renderDone(){
   const r=round||{done:0,fresh:0}, more=buildRound();

@@ -448,7 +448,7 @@ function renderHome(){
     <p class="line">Gelernt: <b>${knownCount()}</b> von ${CARDS.length} Karten</p>
     <p class="line">Koran: Du kennst <b>${pct(quranCoverage())}</b> aller Wörter</p>
     ${syncBox()}
-    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 23.10. 17:26</p>`;
+    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 23.10. 17:28</p>`;
   const g=$("#go"); if(g) g.onclick=startRound;
   bindSync();
 }
@@ -492,7 +492,7 @@ function renderRound(){
   bindSwipe($("#card"));
   $("#endR").onclick=()=>{ round=null; AUD.pause(); go("home"); };
 }
-/* Wischen: vorne in jede Richtung = aufdecken, hinten rechts = gewusst, links = nicht gewusst. Tippen vorne = aufdecken. */
+/* Wischen: vorne in jede Richtung = aufdecken, hinten rechts = gewusst, links = nicht gewusst. Tippen dreht die Karte hin und her. */
 function bindSwipe(el){
   let x0=null, y0=0, dx=0;
   el.addEventListener("touchstart",e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; dx=0; el.style.transition="none"; },{passive:true});
@@ -501,7 +501,7 @@ function bindSwipe(el){
   el.addEventListener("touchend",()=>{ if(x0===null) return; x0=null; el.style.transition=""; el.style.transform=""; delete el.dataset.sw;
     if(Math.abs(dx)<70) return;
     if(!round.flip) flipCard(); else grade(dx>0?3:1); });
-  el.addEventListener("click",e=>{ if(!round.flip&&Math.abs(dx)<10&&!e.target.closest("button")) flipCard(); });
+  el.addEventListener("click",e=>{ if(Math.abs(dx)>=10||e.target.closest("button")) return; round.flip=!round.flip; renderRound(); });
 }
 function renderDone(){
   const r=round||{done:0,fresh:0}, more=buildRound();
@@ -596,6 +596,25 @@ $("#back").onclick=()=>go("suras");
 initToken();
 render();
 if(ghToken) syncFromRemote().then(changed=>{ if(view!=="round") render(); });
+
+/* ================= Selbst aktualisieren =================
+   GitHub Pages liefert die Seite bis zu 10 Minuten aus dem Zwischenspeicher, und die Home-Bildschirm-App
+   hält sie noch länger. Deshalb fragt die App beim Öffnen und beim Zurückkehren die aktuelle Fassung ab
+   (am Zwischenspeicher vorbei) und lädt sich neu, wenn es eine neuere gibt. */
+const BUILD="20261023172848";
+async function checkUpdate(){
+  if(view==="round") return;
+  try{
+    const r=await fetch(location.pathname+"?check="+Date.now(),{cache:"no-store"}); if(!r.ok) return;
+    const m=(await r.text()).match(/const BUILD="(\d+)"/);
+    if(m&&m[1]>BUILD&&sessionStorage.getItem("qw-reload")!==m[1]){
+      sessionStorage.setItem("qw-reload",m[1]); flushPush();
+      location.replace(location.pathname+"?v="+m[1]);
+    }
+  }catch(e){}
+}
+checkUpdate();
+document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible") checkUpdate(); });
 
 </script>
 </body>
