@@ -31,16 +31,28 @@ function dayIdx(ms){ const d=new Date(ms||Date.now()); return Math.floor((d.getT
 function dayKey(){ const d=new Date(Date.now()-3*36e5); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
 
 /* ================= Ton ================= */
-const AUD=new Audio(); AUD.preload="none";
+const AUD=new Audio(); AUD.preload="auto";
+/* Vorladen: Die Aufnahmen werden schon geholt, wenn eine Karte oder ein Wort erscheint, und liegen dann als
+   Datei im Speicher. Ein Tipp auf ▶ spielt sofort ab statt erst zu laden. */
+const AUDIO_READY={}, AUDIO_PENDING={};
+function prefetchAudio(url){
+  if(AUDIO_READY[url]||AUDIO_PENDING[url]) return;
+  AUDIO_PENDING[url]=fetch(url).then(r=>r.ok?r.blob():Promise.reject(r.status))
+    .then(b=>{ AUDIO_READY[url]=URL.createObjectURL(b); })
+    .catch(()=>{ const a=new Audio(); a.preload="auto"; a.src=url; try{ a.load(); }catch(e){} });
+}
 function playUrls(urls,quiet){
   let i=0;
-  const next=()=>{ if(i>=urls.length){ if(!quiet) toast("Ton gerade nicht verfügbar"); return; } AUD.src=urls[i++]; const p=AUD.play(); if(p&&p.catch) p.catch(()=>{}); };
+  const next=()=>{ if(i>=urls.length){ if(!quiet) toast("Ton gerade nicht verfügbar"); return; }
+    const u=urls[i++]; AUD.src=AUDIO_READY[u]||u; const p=AUD.play(); if(p&&p.catch) p.catch(()=>{}); };
   AUD.onerror=next; next();
 }
 function wordUrls(loc){ const [s,a,w]=loc.split(":").map(Number);
   return [`https://audio.qurancdn.com/wbw/${p3(s)}_${p3(a)}_${p3(w)}.mp3`,`https://cdn.islamic.app/quran/audio-word/${s}/${a}/${w}.mp3`]; }
 function verseUrls(key){ const [s,a]=key.split(":").map(Number);
   return [`https://everyayah.com/data/Husary_128kbps/${p3(s)}${p3(a)}.mp3`,`https://everyayah.com/data/Alafasy_128kbps/${p3(s)}${p3(a)}.mp3`]; }
+const prefetchWord=loc=>prefetchAudio(wordUrls(loc)[0]);
+const prefetchVerse=key=>prefetchAudio(verseUrls(key)[0]);
 const playWord=(loc,quiet)=>playUrls(wordUrls(loc),quiet);
 const playVerse=key=>playUrls(verseUrls(key));
 /* ================= Geräte-Abgleich über GitHub (Datei fortschritt.json im Zweig "fortschritt") =================

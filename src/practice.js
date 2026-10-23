@@ -88,6 +88,8 @@ function renderRound(){
   const head=`<div class="prog"><div class="bar"><i style="width:${Math.round(round.i/total*100)}%"></i></div><span class="n">${round.i+1} / ${total}</span>
     <button class="icon" id="endR" aria-label="Runde beenden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>`;
   const affix=c.k==="Vorsilbe"||c.k==="Endung";
+  for(let k=round.i;k<Math.min(round.q.length,round.i+3);k++) prefetchWord(WORDS[CARDS[CARD_IX[round.q[k]]].ex].l);
+  if(round.flip&&round.ex){ const l=WORDS[c.ex].l; prefetchVerse(l.split(":").slice(0,2).join(":")); }
   const tag=affix?`<div class="kind">${c.k}</div>`:isNew?`<div class="kind" style="color:var(--accent)">neu</div>`:"";
   if(!round.flip){
     $("#app").innerHTML=`${head}<div class="card front" id="card"><p class="ar word">${esc(c.ar)}</p>${tag}</div>

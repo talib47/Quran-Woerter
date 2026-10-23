@@ -194,16 +194,28 @@ function dayIdx(ms){ const d=new Date(ms||Date.now()); return Math.floor((d.getT
 function dayKey(){ const d=new Date(Date.now()-3*36e5); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
 
 /* ================= Ton ================= */
-const AUD=new Audio(); AUD.preload="none";
+const AUD=new Audio(); AUD.preload="auto";
+/* Vorladen: Die Aufnahmen werden schon geholt, wenn eine Karte oder ein Wort erscheint, und liegen dann als
+   Datei im Speicher. Ein Tipp auf ▶ spielt sofort ab statt erst zu laden. */
+const AUDIO_READY={}, AUDIO_PENDING={};
+function prefetchAudio(url){
+  if(AUDIO_READY[url]||AUDIO_PENDING[url]) return;
+  AUDIO_PENDING[url]=fetch(url).then(r=>r.ok?r.blob():Promise.reject(r.status))
+    .then(b=>{ AUDIO_READY[url]=URL.createObjectURL(b); })
+    .catch(()=>{ const a=new Audio(); a.preload="auto"; a.src=url; try{ a.load(); }catch(e){} });
+}
 function playUrls(urls,quiet){
   let i=0;
-  const next=()=>{ if(i>=urls.length){ if(!quiet) toast("Ton gerade nicht verfügbar"); return; } AUD.src=urls[i++]; const p=AUD.play(); if(p&&p.catch) p.catch(()=>{}); };
+  const next=()=>{ if(i>=urls.length){ if(!quiet) toast("Ton gerade nicht verfügbar"); return; }
+    const u=urls[i++]; AUD.src=AUDIO_READY[u]||u; const p=AUD.play(); if(p&&p.catch) p.catch(()=>{}); };
   AUD.onerror=next; next();
 }
 function wordUrls(loc){ const [s,a,w]=loc.split(":").map(Number);
   return [`https://audio.qurancdn.com/wbw/${p3(s)}_${p3(a)}_${p3(w)}.mp3`,`https://cdn.islamic.app/quran/audio-word/${s}/${a}/${w}.mp3`]; }
 function verseUrls(key){ const [s,a]=key.split(":").map(Number);
   return [`https://everyayah.com/data/Husary_128kbps/${p3(s)}${p3(a)}.mp3`,`https://everyayah.com/data/Alafasy_128kbps/${p3(s)}${p3(a)}.mp3`]; }
+const prefetchWord=loc=>prefetchAudio(wordUrls(loc)[0]);
+const prefetchVerse=key=>prefetchAudio(verseUrls(key)[0]);
 const playWord=(loc,quiet)=>playUrls(wordUrls(loc),quiet);
 const playVerse=key=>playUrls(verseUrls(key));
 /* ================= Geräte-Abgleich über GitHub (Datei fortschritt.json im Zweig "fortschritt") =================
@@ -448,7 +460,7 @@ function renderHome(){
     <p class="line">Gelernt: <b>${knownCount()}</b> von ${CARDS.length} Karten</p>
     <p class="line">Koran: Du kennst <b>${pct(quranCoverage())}</b> aller Wörter</p>
     ${syncBox()}
-    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 23.10. 17:28</p>`;
+    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 23.10. 17:32</p>`;
   const g=$("#go"); if(g) g.onclick=startRound;
   bindSync();
 }
@@ -463,6 +475,8 @@ function renderRound(){
   const head=`<div class="prog"><div class="bar"><i style="width:${Math.round(round.i/total*100)}%"></i></div><span class="n">${round.i+1} / ${total}</span>
     <button class="icon" id="endR" aria-label="Runde beenden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>`;
   const affix=c.k==="Vorsilbe"||c.k==="Endung";
+  for(let k=round.i;k<Math.min(round.q.length,round.i+3);k++) prefetchWord(WORDS[CARDS[CARD_IX[round.q[k]]].ex].l);
+  if(round.flip&&round.ex){ const l=WORDS[c.ex].l; prefetchVerse(l.split(":").slice(0,2).join(":")); }
   const tag=affix?`<div class="kind">${c.k}</div>`:isNew?`<div class="kind" style="color:var(--accent)">neu</div>`:"";
   if(!round.flip){
     $("#app").innerHTML=`${head}<div class="card front" id="card"><p class="ar word">${esc(c.ar)}</p>${tag}</div>
@@ -551,14 +565,14 @@ function renderSura(){
   }
   $("#app").innerHTML=html+"</div>";
   document.querySelectorAll(".w").forEach(el=>el.onclick=()=>openWord(+el.dataset.w,el));
-  document.querySelectorAll(".vno").forEach(el=>el.onclick=()=>{ const k=el.dataset.v; openVerses[k]=!openVerses[k]; renderSura(); });
+  document.querySelectorAll(".vno").forEach(el=>el.onclick=()=>{ const k=el.dataset.v; openVerses[k]=!openVerses[k]; if(openVerses[k]) prefetchVerse(k); renderSura(); });
   document.querySelectorAll("[data-pv]").forEach(el=>el.onclick=()=>playVerse(el.dataset.pv));
 }
 /* Wortblatt: Bedeutung an dieser Stelle, Formangabe, Bestandteile mit ihren Karten */
 function openWord(wi,el){
   closeSheet();
   if(el) el.classList.add("sel");
-  const w=WORDS[wi];
+  const w=WORDS[wi]; prefetchWord(w.l);
   const parts=w.c.map(ci=>{ const c=CARDS[ci], k=isKnown(c.id);
     return `<li><span class="ar">${esc(c.ar)}</span><span class="pm"><span class="dot${k?" on":""}"></span>${mix(c.de)}
       <small>${[c.k,c.r?"Wurzel "+c.r:"",`${c.f.toLocaleString("de-DE")}× im Koran`,k?"gelernt":isSeen(c.id)?"in Wiederholung":"noch nicht gelernt"].filter(Boolean).map(mix).join(" · ")}</small></span></li>`; }).join("");
@@ -601,7 +615,7 @@ if(ghToken) syncFromRemote().then(changed=>{ if(view!=="round") render(); });
    GitHub Pages liefert die Seite bis zu 10 Minuten aus dem Zwischenspeicher, und die Home-Bildschirm-App
    hält sie noch länger. Deshalb fragt die App beim Öffnen und beim Zurückkehren die aktuelle Fassung ab
    (am Zwischenspeicher vorbei) und lädt sich neu, wenn es eine neuere gibt. */
-const BUILD="20261023172848";
+const BUILD="20261023173224";
 async function checkUpdate(){
   if(view==="round") return;
   try{

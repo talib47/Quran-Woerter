@@ -29,14 +29,14 @@ function renderSura(){
   }
   $("#app").innerHTML=html+"</div>";
   document.querySelectorAll(".w").forEach(el=>el.onclick=()=>openWord(+el.dataset.w,el));
-  document.querySelectorAll(".vno").forEach(el=>el.onclick=()=>{ const k=el.dataset.v; openVerses[k]=!openVerses[k]; renderSura(); });
+  document.querySelectorAll(".vno").forEach(el=>el.onclick=()=>{ const k=el.dataset.v; openVerses[k]=!openVerses[k]; if(openVerses[k]) prefetchVerse(k); renderSura(); });
   document.querySelectorAll("[data-pv]").forEach(el=>el.onclick=()=>playVerse(el.dataset.pv));
 }
 /* Wortblatt: Bedeutung an dieser Stelle, Formangabe, Bestandteile mit ihren Karten */
 function openWord(wi,el){
   closeSheet();
   if(el) el.classList.add("sel");
-  const w=WORDS[wi];
+  const w=WORDS[wi]; prefetchWord(w.l);
   const parts=w.c.map(ci=>{ const c=CARDS[ci], k=isKnown(c.id);
     return `<li><span class="ar">${esc(c.ar)}</span><span class="pm"><span class="dot${k?" on":""}"></span>${mix(c.de)}
       <small>${[c.k,c.r?"Wurzel "+c.r:"",`${c.f.toLocaleString("de-DE")}× im Koran`,k?"gelernt":isSeen(c.id)?"in Wiederholung":"noch nicht gelernt"].filter(Boolean).map(mix).join(" · ")}</small></span></li>`; }).join("");
