@@ -13,14 +13,17 @@
 <link rel="manifest" href="manifest.webmanifest?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* Eine schmale Spalte, zwei Reiter unten. Arabisch immer voll vokalisiert in Amiri Quran. */
+/* Eine schmale Spalte, zwei Reiter unten. Koranwörter voll vokalisiert in Amiri Quran, Arabisch im deutschen Text in Noto Naskh Arabic.
+   Amiri Quran braucht viel Platz: Zeichen reichen bis 1,42 em über und 0,76 em unter die Grundlinie (gemessen an allen Wörtern der App).
+   Deshalb haben alle arabischen Zeilen line-height ≥ 2 und unten zusätzlichen Abstand, damit nichts in den Text darunter ragt. */
 :root{
   --bg:#F4F1E9; --surface:#FCFBF7; --ink:#1C2220; --muted:#5E6762; --line:#D9D3C5;
   --accent:#1E5A4C; --accent-ink:#FFFFFF; --accent-soft:#DDEAE4;
   --hl:#F3E4B8; --good:#2F7A4A; --bad:#A3392B; --warn:#9A6B12;
-  --ar:"Amiri Quran","Amiri","Scheherazade New","Noto Naskh Arabic","Geeza Pro",serif;
+  --ar:"Amiri Quran","Noto Naskh Arabic","Geeza Pro",serif;
+  --art:"Noto Naskh Arabic","Geeza Pro",serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
 @media (prefers-color-scheme: dark){
@@ -53,7 +56,7 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .muted{color:var(--muted)}
 .small{font-size:.86rem}
 .ar{font-family:var(--ar);direction:rtl;font-feature-settings:"calt","liga"}
-.ai{font-family:var(--ar);font-size:1.25em;line-height:1;unicode-bidi:isolate}
+.ai{font-family:var(--art);font-size:1.12em;line-height:normal;unicode-bidi:isolate}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);padding:12px 18px;font-weight:650;font-size:1rem;min-height:48px}
 .btn:active{filter:brightness(.92)}
 .btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}
@@ -76,16 +79,16 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 18px;min-height:46vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;user-select:none;-webkit-user-select:none}
 .card.front{cursor:pointer}
 .card.back{justify-content:flex-start}
-.word{font-size:4.2rem;line-height:1.7;margin:0}
-.card.back .word{font-size:2.6rem;line-height:1.6}
-.kind{font-size:.78rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+.word{font-size:4.2rem;line-height:2;padding-bottom:.42em;margin:0}
+.card.back .word{font-size:2.6rem}
+.kind{font-size:.78rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin:0}
 .tapnote{margin-top:18px;font-size:.85rem;color:var(--muted)}
 .mean{font-size:1.4rem;font-weight:650;margin:4px 0 6px;line-height:1.3}
 .meta{font-size:.88rem;color:var(--muted);margin:2px 0}
 .note{font-size:.92rem;margin:6px 0 0}
 .ex{width:100%;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
-.vtext{font-size:1.65rem;line-height:2.15;margin:0}
-.hl{background:var(--hl);border-radius:6px;padding:0 .12em}
+.vtext{font-size:1.65rem;line-height:2.3;padding-bottom:.3em;margin:0}
+.hl{color:var(--accent);background:linear-gradient(transparent 40%,var(--hl) 40%,var(--hl) 88%,transparent 88%);padding:0 .08em}
 .tr{font-size:.92rem;color:var(--muted);margin:6px 0 0;line-height:1.4}
 .ref{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .play{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
@@ -99,24 +102,25 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 /* Suren */
 .slist{list-style:none;margin:0;padding:0}
 .slist li{margin-bottom:10px}
-.srow{width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;grid-template-columns:2.2rem 1fr auto;align-items:center;gap:10px}
+.srow{width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px 12px;display:grid;grid-template-columns:2.2rem 1fr 6.5rem;align-items:center;column-gap:10px;row-gap:4px}
 .srow .no{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem;text-align:center}
 .srow .nm{font-weight:650}
 .srow .nm small{display:block;font-weight:400;color:var(--muted);font-size:.82rem}
-.srow .arn{font-size:1.5rem;line-height:1.4}
+.srow .arn{font-size:1.45rem;line-height:2;padding-bottom:.42em;text-align:right}
 .pct{font-variant-numeric:tabular-nums;font-size:.85rem;color:var(--muted);text-align:right}
-.mini{height:4px;background:var(--line);border-radius:2px;margin-top:6px;overflow:hidden;grid-column:2/4}
+.mini{height:4px;background:var(--line);border-radius:2px;overflow:hidden;grid-column:2/3}
 .mini i{display:block;height:100%;background:var(--accent)}
-.shead{display:flex;align-items:baseline;gap:10px;margin:0 0 6px}
+.shead{display:flex;align-items:center;gap:10px;margin:0 0 2px}
 .shead h1{margin:0}
+.shead .ar{margin-left:auto;font-size:1.5rem;line-height:2;padding-bottom:.42em}
 .reader{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 16px}
 .verse{padding:10px 0;border-bottom:1px solid var(--line)}
 .verse:last-child{border-bottom:0}
-.vline{font-size:1.85rem;line-height:2.35;margin:0;text-align:right}
+.vline{font-size:1.85rem;line-height:2.35;padding-bottom:.3em;margin:0;text-align:right}
 .w{cursor:pointer;border-radius:6px;padding:0 .05em;-webkit-tap-highlight-color:transparent}
 .w:active,.w.sel{background:var(--accent-soft)}
-.w.new{text-decoration-line:underline;text-decoration-style:dotted;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:.45em}
-.vno{display:inline-flex;align-items:center;justify-content:center;min-width:1.6em;height:1.6em;margin:0 .25em;border:1.5px solid var(--accent);border-radius:50%;font-size:.62em;color:var(--accent);vertical-align:middle;cursor:pointer;font-family:var(--ar);line-height:1;padding-top:.1em}
+.w.new{text-decoration-line:underline;text-decoration-style:dotted;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:.5em}
+.vno{display:inline-flex;align-items:center;justify-content:center;min-width:1.75em;height:1.75em;padding:0 .2em;margin:0 .25em;border:1.5px solid var(--accent);border-radius:999px;font-size:.5em;color:var(--accent);vertical-align:middle;cursor:pointer;font-family:var(--sans);line-height:1;font-weight:600}
 .vtr{direction:ltr;text-align:left;font-size:.95rem;color:var(--muted);margin:2px 0 4px;display:flex;gap:10px;align-items:flex-start}
 .vtr p{margin:0;flex:1}
 .credits{margin-top:24px;font-size:.78rem;color:var(--muted);line-height:1.5}
@@ -127,12 +131,12 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .sheet .in{max-width:40rem;margin:0 auto}
 .sgrip{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 10px}
 .shw{display:flex;align-items:center;gap:12px}
-.shw .ar{font-size:2.4rem;line-height:1.6;flex:1;text-align:right}
+.shw .ar{font-size:2.4rem;line-height:2;padding-bottom:.42em;flex:1;text-align:right}
 .gloss{font-size:1.25rem;font-weight:650;margin:2px 0 4px}
 .form{font-size:.86rem;color:var(--muted);margin:0 0 8px}
 .parts{list-style:none;margin:8px 0 0;padding:0;border-top:1px solid var(--line)}
 .parts li{display:grid;grid-template-columns:5.2rem 1fr;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
-.parts .ar{font-size:1.6rem;line-height:1.5;text-align:right}
+.parts .ar{font-size:1.5rem;line-height:2;padding-bottom:.42em;text-align:right}
 .parts .pm{font-size:.95rem}
 .parts .pm small{display:block;color:var(--muted);font-size:.8rem}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--line);margin-right:6px;vertical-align:middle}

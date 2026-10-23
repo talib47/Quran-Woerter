@@ -20,7 +20,7 @@ python3 build.py             # src/ → index.html
 
 | Datei | Inhalt |
 |---|---|
-| `src/head.html` | Kopf, Icons, Manifest, CSS (Farben als Tokens, Dunkelmodus), Schrift Amiri Quran |
+| `src/head.html` | Kopf, Icons, Manifest, CSS (Farben als Tokens, Dunkelmodus), Schriften: Amiri Quran für Koranwörter, Noto Naskh Arabic für Arabisch im deutschen Text |
 | `src/data.js` | erzeugt: Karten, Wörter der Suren, Verse mit Übersetzung, Abdeckungsgruppen |
 | `src/core.js` | Speicher (`localStorage`), Ton, Geräte-Abgleich über GitHub |
 | `src/fsrs.js` | Wiederholungsplan FSRS-5 |
@@ -36,6 +36,10 @@ python3 build.py             # src/ → index.html
 Schlüssel kommen aus der Formanalyse des Korpus: `n:` Nomen, `v:` Verb, `p:` Partikel/Vorsilbe, `s:` angehängte Endung (ـهُ، ـهُمْ، ـنَا …), `pr:` freies Pronomen. Subjektendungen der Verben (ـوا، ـونَ، ـتَ …) sind keine eigenen Karten, sie gehören zur Konjugation. Ein Wort gilt als bekannt, wenn alle seine Karten zuletzt mindestens mit „Schwer“ bewertet wurden.
 
 Neue Sure: Nummer in `SURAS` in `tools/make_data.py` eintragen, Skript laufen lassen; es listet fehlende Bedeutungen und Glossen.
+
+### Schrift und Zeilenhöhen
+
+Amiri Quran setzt Zeichen bis 1,42 em über und 0,76 em unter die Grundlinie (gemessen an allen Wörtern der App, z. B. ٱلنَّفَّٰثَٰتِ und ٱلرَّحِيمِ). Arabische Zeilen haben deshalb `line-height` ≥ 2 und unten zusätzlich Abstand (`padding-bottom: .42em` bei Einzelwörtern, `.3em` bei Versen). Arabisch im deutschen Text (Wurzeln, Pluralformen) steht in Noto Naskh Arabic mit `line-height: normal`, das bleibt in seiner Zeile. Bei neuen Ansichten diese Regeln übernehmen, sonst laufen Kasra und Schadda in den Text darüber oder darunter.
 
 ## Geräte-Abgleich
 

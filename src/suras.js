@@ -8,8 +8,8 @@ function renderSuras(){
   const rows=DATA.suras.map(s=>{ const c=suraCoverage(s.n);
     return `<li><button class="srow" data-n="${s.n}"><span class="no">${s.n}</span>
       <span class="nm">${esc(s.name)}<small>${esc(s.de)} · ${s.v} Verse</small></span>
-      <span class="pct"><span class="ar arn">${esc(s.ar)}</span><br>${pct0(c)}</span>
-      <span class="mini"><i style="width:${Math.round(c*100)}%"></i></span></button></li>`; }).join("");
+      <span class="ar arn">${esc(s.ar)}</span>
+      <span></span><span class="mini"><i style="width:${Math.round(c*100)}%"></i></span><span class="pct">${pct0(c)}</span></button></li>`; }).join("");
   $("#app").innerHTML=`<ul class="slist">${rows}</ul>
     <p class="muted small">Der Prozentwert zeigt, wie viele Wörter der Sure du schon vollständig kennst.</p>
     <div class="credits">Koranwörter und Formanalyse: <a href="https://corpus.quran.com">Quranic Arabic Corpus</a> (Universität Leeds, GNU GPL), korrigierte Fassung von <a href="https://github.com/mustafa0x/quran-morphology">quran-morphology</a>.
@@ -19,7 +19,7 @@ function renderSuras(){
 }
 function renderSura(){
   const s=DATA.suras.find(x=>x.n===curSura); if(!s){ go("suras"); return; }
-  let html=`<div class="shead"><h1>${esc(s.name)}</h1><span class="muted small">${pct0(suraCoverage(s.n))} bekannt</span><span class="ar" style="margin-left:auto;font-size:1.6rem;line-height:1">${esc(s.ar)}</span></div>
+  let html=`<div class="shead"><h1>${esc(s.name)}</h1><span class="muted small">${pct0(suraCoverage(s.n))} bekannt</span><span class="ar">${esc(s.ar)}</span></div>
     <p class="muted small" style="margin:0 0 12px">Wort antippen: Bedeutung · Versnummer: Übersetzung</p><div class="reader">`;
   for(let a=1;a<=s.v;a++){
     const vk=s.n+":"+a, v=DATA.verses[vk];
