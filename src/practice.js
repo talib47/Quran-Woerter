@@ -80,7 +80,8 @@ function renderHome(){
 function verseHTML(vk,hiWord){
   return DATA.verses[vk].w.map(wi=>`<span${wi===hiWord?' class="hl"':""}>${esc(WORDS[wi].t)}</span>`).join(" ");
 }
-const PLAY_SVG=`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
+const SND_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>`;
+const VERSE_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 11h16M4 16h10"/></svg>`;
 function renderRound(){
   const id=round.q[round.i], c=CARDS[CARD_IX[id]], s=cst(id);
   const total=round.q.length, isNew=!s;
@@ -97,19 +98,20 @@ function renderRound(){
     const w=WORDS[c.ex], vk=w.l.split(":").slice(0,2).join(":"), v=DATA.verses[vk];
     const meta=[c.r?`Wurzel <span class="ai">${esc(c.r)}</span>`:"", c.pr?`Gegenwart <span class="ai">${esc(c.pr)}</span>`:"", c.st?`Stamm ${c.st}`:""].filter(Boolean).join(" · ");
     $("#app").innerHTML=`${head}<div class="card back" id="card">
-      <div class="wrow"><p class="ar word">${esc(c.ar)}</p><button class="icon play1" id="pW" aria-label="Anhören">${PLAY_SVG}</button></div>${affix?`<div class="kind">${c.k}</div>`:""}
+      <button class="icon cic r" id="pW" aria-label="Wort anhören">${SND_SVG}</button>
+      <button class="icon cic l${round.ex?" on":""}" id="exT" aria-label="Vers zeigen">${VERSE_SVG}</button>
+      <p class="ar word">${esc(c.ar)}</p>${affix?`<div class="kind">${c.k}</div>`:""}
       <div class="mean">${mix(c.de)}</div>
       ${meta?`<div class="meta">${meta}</div>`:""}
       ${c.no?`<div class="meta">${mix(c.no)}</div>`:""}
       ${round.ex?`<div class="ex"><p class="ar vtext">${verseHTML(vk,c.ex)}</p>
         <div class="ref">${vk} · ${esc(w.g)} <button class="link" id="pV">▶ Vers</button></div>
-        ${v.tr?`<p class="tr">${esc(v.tr)}</p>`:""}</div>`
-      :`<button class="link exl" id="exT">Im Vers zeigen</button>`}
+        ${v.tr?`<p class="tr">${esc(v.tr)}</p>`:""}</div>`:""}
       </div>
       <div class="acts"><button class="btn no" id="g1">Nicht gewusst</button><button class="btn" id="g3">Gewusst</button></div>`;
     $("#pW").onclick=e=>{ e.stopPropagation(); playWord(w.l); };
     const pv=$("#pV"); if(pv) pv.onclick=()=>playVerse(vk);
-    const et=$("#exT"); if(et) et.onclick=()=>{ round.ex=true; renderRound(); };
+    $("#exT").onclick=e=>{ e.stopPropagation(); round.ex=!round.ex; renderRound(); };
     $("#g1").onclick=()=>grade(1); $("#g3").onclick=()=>grade(3);
   }
   bindSwipe($("#card"));

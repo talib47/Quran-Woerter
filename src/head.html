@@ -78,7 +78,12 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .prog .n{font-size:.85rem;color:var(--muted);min-width:3.6em;text-align:right;font-variant-numeric:tabular-nums}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 18px;min-height:52vh;margin-bottom:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;user-select:none;-webkit-user-select:none}
 .card.front{cursor:pointer}
-.card.back{justify-content:flex-start}
+.card{position:relative}
+.card.back{padding-top:30px}
+.cic{position:absolute;top:8px;color:var(--muted);opacity:.7}
+.cic.r{right:8px}
+.cic.l{left:8px}
+.cic.on{color:var(--accent);opacity:1}
 .word{font-size:4.2rem;line-height:2;padding-bottom:.42em;margin:0}
 .card.back .word{font-size:2.6rem}
 .kind{font-size:.78rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin:0}
@@ -98,9 +103,6 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .card{transition:transform .2s}
 .card[data-sw="r"]{box-shadow:0 0 0 3px var(--good)}
 .card[data-sw="l"]{box-shadow:0 0 0 3px var(--bad)}
-.wrow{display:flex;align-items:center;justify-content:center;gap:4px}
-.play1{color:var(--accent)}
-.exl{margin-top:14px;font-size:.9rem}
 /* Suren */
 .slist{list-style:none;margin:0;padding:0}
 .slist li{margin-bottom:10px}
