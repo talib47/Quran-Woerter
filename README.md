@@ -11,9 +11,10 @@ python3 tools/make_data.py   # Korpus + deutsche Texte → src/data.js
 python3 build.py             # src/ → index.html
 ```
 
-## Zwei Bereiche
+## Drei Bereiche
 
 - **Üben:** Karteikarten in Runden. Antippen oder wischen zum Aufdecken, dann „Gewusst“ (oder nach rechts wischen) bzw. „Nicht gewusst“ (nach links). Neue Karten, die man schon kennt: „Kenne ich“, dann kommen sie erst nach gut zwei Wochen wieder. Vers und Ton nur auf Wunsch. Wiederholungsplan FSRS-5 wie in Anki (gewusst = Gut, nicht gewusst = Nochmal, Kenne ich = Einfach). Neue Karten kommen umso mehr, je weniger gerade fällig ist.
+- **Themen:** Gliederung wie im Heft „80 % der Koranwörter“ (`tools/themen.txt`): erst die kleinen Wörter, dann Nomen nach Themen, dann Verben nach Art. Neue Karten kommen aus dem Thema, das gerade dran ist; ist es fertig, aus dem nächsten. Jedes Thema als Tabelle Arabisch – Deutsch mit Lernstand. Zuletzt „Aus den Suren“: übrige Wörter der Lese-Suren.
 - **Suren:** Sure Vers für Vers, voll vokalisiert. Wort antippen → Bedeutung an der Stelle, Formangabe, Bestandteile mit ihren Karten. Versnummer → Übersetzung und Rezitation. Noch nicht gelernte Wörter sind gepunktet unterstrichen.
 
 ## Aufbau
@@ -35,7 +36,9 @@ python3 build.py             # src/ → index.html
 
 Schlüssel kommen aus der Formanalyse des Korpus: `n:` Nomen, `v:` Verb, `p:` Partikel/Vorsilbe, `s:` angehängte Endung (ـهُ، ـهُمْ، ـنَا …), `pr:` freies Pronomen. Subjektendungen der Verben (ـوا، ـونَ، ـتَ …) sind keine eigenen Karten, sie gehören zur Konjugation. Ein Wort gilt als bekannt, wenn alle seine Karten zuletzt mindestens mit „Schwer“ bewertet wurden.
 
-Neue Sure: Nummer in `SURAS` in `tools/make_data.py` eintragen, Skript laufen lassen; es listet fehlende Bedeutungen und Glossen.
+Neues Thema: Block in `tools/themen.txt` ergänzen (Schlüssel je Zeile, optional Beispielstelle), Skript laufen lassen; es listet fehlende Bedeutungen. Beispielvers: sonst der kürzeste Vers mit dem Wort, bevorzugt aus den Lese-Suren. Hinweiswörter (هَٰذَا، ذَٰلِكَ …) sind je eine Karte `d:nah|fern:Geschlecht/Zahl`, Relativwörter getrennt nach ٱلَّذِي / ٱلَّتِي / ٱلَّذِينَ.
+
+Neue Lese-Sure: Nummer in `SURAS` eintragen; das Skript verlangt dann Glossen für jedes Wort.
 
 ### Schrift und Zeilenhöhen
 

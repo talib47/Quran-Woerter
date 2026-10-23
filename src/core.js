@@ -78,6 +78,7 @@ function mergeStates(a,b){
   }
   const ad=a.days||{}, bd=b.days||{};
   for(const d of new Set([...Object.keys(ad),...Object.keys(bd)])) out.days[d]=Math.max(ad[d]||0,bd[d]||0);
+  if(a.th||b.th) out.th=!a.th?b.th:!b.th?a.th:((b.th.t||0)>(a.th.t||0)?b.th:a.th);
   return out;
 }
 async function ensureBranch(){
@@ -128,7 +129,7 @@ async function syncFromRemote(){
     if(remote===null) return false;
     const before=JSON.stringify(state.cards), merged=mergeStates(state,remote);
     const changedHere=JSON.stringify(merged.cards)!==before;
-    const remoteBehind=JSON.stringify(merged.cards)!==JSON.stringify(remote.cards||{})||JSON.stringify(merged.days)!==JSON.stringify(remote.days||{});
+    const remoteBehind=JSON.stringify(merged.cards)!==JSON.stringify(remote.cards||{})||JSON.stringify(merged.days)!==JSON.stringify(remote.days||{})||JSON.stringify(merged.th||null)!==JSON.stringify(remote.th||null);
     state=merged; norm(); lsSet(KEY,JSON.stringify(state));
     if(remoteBehind) await push(); else { syncStatus="ok"; lastSync=new Date(); }
     return changedHere;

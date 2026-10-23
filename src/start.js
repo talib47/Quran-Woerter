@@ -1,16 +1,16 @@
 /* ================= Navigation und Start ================= */
 let view="home";
-const TITLES={home:"Üben", round:"Üben", done:"Üben", suras:"Suren", sura:""};
+const TITLES={home:"Üben", round:"Üben", done:"Üben", themes:"Themen", theme:"Themen", suras:"Suren", sura:"Suren"};
 function go(v){ closeSheet(); view=v; render(); window.scrollTo(0,0); }
 function render(){
-  $("#ttl").textContent=view==="sura"?"Suren":TITLES[view];
-  $("#back").hidden=view!=="sura";
+  $("#ttl").textContent=TITLES[view];
+  $("#back").hidden=view!=="sura"&&view!=="theme";
   $("#tabs").classList.toggle("hide",view==="round");
-  document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.v===(view==="sura"?"suras":view==="round"||view==="done"?"home":view)));
-  ({home:renderHome, round:renderRound, done:renderDone, suras:renderSuras, sura:renderSura})[view]();
+  document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.v===({sura:"suras",theme:"themes",round:"home",done:"home"}[view]||view)));
+  ({home:renderHome, round:renderRound, done:renderDone, themes:renderThemes, theme:renderTheme, suras:renderSuras, sura:renderSura})[view]();
 }
 document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{ if(view==="round") round=null; go(b.dataset.v); });
-$("#back").onclick=()=>go("suras");
+$("#back").onclick=()=>go(view==="theme"?"themes":"suras");
 initToken();
 render();
 if(ghToken) syncFromRemote().then(changed=>{ if(view!=="round") render(); });

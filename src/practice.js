@@ -9,7 +9,18 @@ function dueCards(){
   return CARDS.filter(c=>{ const s=cst(c.id); return s&&s.due<=today; })
     .sort((a,b)=>cst(a.id).due-cst(b.id).due||CARD_IX[a.id]-CARD_IX[b.id]);
 }
-const freshCards=()=>CARDS.filter(c=>!isSeen(c.id));
+/* Neue Karten kommen aus dem gewählten Thema; ist es durch, aus dem nächsten Thema in Heftreihenfolge */
+const THEMES=DATA.themes;
+const themeLeft=t=>t.c.filter(ci=>!isSeen(CARDS[ci].id)).length;
+function curTheme(){
+  const id=state.th&&state.th.id; let t=THEMES.find(x=>x.id===id);
+  if(!t||!themeLeft(t)) t=THEMES.find(x=>themeLeft(x))||THEMES[0];
+  return t;
+}
+function freshCards(){
+  const t=curTheme(), pick=x=>x.c.map(ci=>CARDS[ci]).filter(c=>!isSeen(c.id));
+  return pick(t).concat(...THEMES.filter(x=>x!==t).map(pick));
+}
 const knownCount=()=>CARDS.filter(c=>isKnown(c.id)).length;
 function quranCoverage(){
   let n=0;
@@ -63,10 +74,11 @@ function renderHome(){
   let hero;
   if(due||fresh){
     hero=`<div class="block"><div class="nums"><div><b>${due}</b><span>fällig</span></div><div><b>${fresh}</b><span>neu</span></div></div>
+      ${fresh?`<p class="muted small" style="margin:-6px 0 14px">Neue Karten aus: <b style="color:var(--ink)">${esc(curTheme().title)}</b></p>`:""}
       <button class="btn wide" id="go">${today?"Weiter üben":"Üben"}</button></div>`;
   } else {
     const nx=nextDueInfo();
-    hero=`<div class="block empty"><b>Alles erledigt.</b><p class="muted small" style="margin:6px 0 0">${nx?`Nächste Wiederholung ${nx.days===1?"morgen":"in "+nx.days+" Tagen"} (${nx.n} ${nx.n===1?"Karte":"Karten"}).`:""} Weitere Suren kommen als Nächstes dazu.</p></div>`;
+    hero=`<div class="block empty"><b>Alles erledigt.</b><p class="muted small" style="margin:6px 0 0">${nx?`Nächste Wiederholung ${nx.days===1?"morgen":"in "+nx.days+" Tagen"} (${nx.n} ${nx.n===1?"Karte":"Karten"}).`:""} Weitere Themen kommen als Nächstes dazu.</p></div>`;
   }
   $("#app").innerHTML=`${hero}
     ${today?`<p class="line">Heute: <b>${today}</b> ${today===1?"Karte":"Karten"}</p>`:""}

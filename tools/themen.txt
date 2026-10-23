@@ -1,0 +1,48 @@
+# Themen nach dem Heft „80 % der Koranwörter“ (understandquran.com). Reihenfolge = Reihenfolge der neuen Karten.
+# == Kennung | Titel | Untertitel, darunter je Zeile ein Kartenschlüssel (wie in bedeutungen.tsv),
+# optional mit Tab und Beispielstelle Sure:Vers:Wort, sonst wählt das Skript den kürzesten passenden Vers
+
+== h1 | Dies, das … · Nein! | Hinweis- und Relativwörter, Verneinung (Heft S. 1)
+d:nah:MS
+d:fern:MS
+d:nah:FS
+d:fern:FS
+d:nah:P
+d:fern:P
+n:الَّذِي
+n:الَّذِي:f
+n:الَّذِي:pl
+p:لا
+p:إِلّا	37:40:1
+p:كَلّا
+p:لَن
+p:لَم
+p:ما
+v:لَيْسَ
+p:بَلَى
+n:غَيْر
+n:دُون
+p:نَعَم
+
+== h2 | Wessen? · Wer? | Endungen und Personalwörter (Heft S. 2)
+s:3MS
+s:3MP
+s:2MS
+s:2MP
+s:1S
+s:1P
+s:3FS	91:1:2
+s:3FP
+s:2FS
+s:3D
+s:2D
+pr:3MS
+pr:3MP
+pr:2MS
+pr:2MP
+pr:1S
+pr:1P
+pr:3FS
+pr:3FP
+pr:3D
+pr:2D

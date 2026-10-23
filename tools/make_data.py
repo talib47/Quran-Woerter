@@ -20,10 +20,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TOOLS = os.path.join(ROOT, 'tools')
 CACHE = os.path.join(TOOLS, '.cache')
 MORPH_URL = 'https://raw.githubusercontent.com/mustafa0x/quran-morphology/master/quran-morphology.txt'
-TR_URL = 'https://raw.githubusercontent.com/fawazahmed0/quran-api/1/editions/deu-frankbubenheima/{}.json'
+TR_URL = 'https://raw.githubusercontent.com/fawazahmed0/quran-api/1/editions/deu-frankbubenheima.json'
 
-# Lernreihenfolge: Al-Fātiḥa, dann von hinten nach vorn
+# Suren zum Lesen (Reiter „Suren“); ihre übrigen Wörter bilden das letzte Thema „Aus den Suren“
 SURAS = [1, 114, 113, 112]
+# Reihenfolge der neuen Karten: Themen in tools/themen.txt (nach dem Heft „80 % der Koranwörter“)
 
 SURA_META = {
     1: ('الفاتحة', 'Al-Fātiḥa', 'Die Eröffnende'),
@@ -124,21 +125,41 @@ def particle_class(seg):
         return ''
     if lem == 'ب' and 'P' not in tags:
         return 'x'
+    if lem == 'ما':
+        return '' if 'NEG' in tags else 'x'
     return ''
 
 
 def seg_keys(segs):
     """Kartenschlüssel je Segment; None = gehört zur Konjugation des Verbs davor (Subjektendung)."""
     keys = []
+    dem = [i for i, sg in enumerate(segs) if 'DEM' in sg['tags']]
     for i, seg in enumerate(segs):
         tags = seg['tags']
+        if dem and ({'ATT', 'DIST', 'ADDR'} & tags or i in dem):
+            # Hinweiswort (هَٰذَا، ذَٰلِكَ، تِلْكَ …) als ein Ganzes: nah/fern und Geschlecht/Zahl
+            if i != dem[0]:
+                keys.append(None)
+                continue
+            if seg['lem'] != 'ذا':
+                keys.append('n:' + seg['lem'])
+                continue
+            far = any({'DIST', 'ADDR'} & sg['tags'] for sg in segs)
+            gn = next((g for g in ('MS', 'FS', 'MD', 'FD', 'D', 'P') if g in tags), 'MS')
+            keys.append('d:' + ('fern' if far else 'nah') + ':' + gn)
+            continue
+        if 'REL' in tags and seg['lem'] == 'الَّذِي':
+            gn = next((g for g in ('MS', 'FS', 'MP', 'FP', 'MD', 'FD', 'D') if g in tags), 'MS')
+            keys.append('n:الَّذِي' + {'MS': '', 'FS': ':f', 'MP': ':pl', 'FP': ':fpl'}.get(gn, ':d'))
+            continue
         if 'PRON' in tags:
             prev = segs[i - 1] if i > 0 else None
             # angehängt: ausdrücklich als Endung markiert oder direkt nach Präposition/Nomen/Verb;
             # frei: am Wortanfang, mit eigener Grundform (إِيَّا) oder nach وَ/فَ/لَـ (Betonung) usw.
             attached = prev is not None and not seg['lem'] and (
                 'SUFF' in tags or 'P' in prev['tags'] or prev['pos'] in ('N', 'V'))
-            if attached and prev['pos'] == 'V' and seg['pgn'] == prev['pgn'] and seg['pgn'] in SUBJ.get(prev['tense'], ()):
+            same = prev is not None and (seg['pgn'] == prev['pgn'] or (seg['pgn'] or '').endswith('D') and (prev['pgn'] or '').endswith('D'))
+            if attached and prev['pos'] == 'V' and same and (seg['pgn'] in SUBJ.get(prev['tense'], ()) or prev['pgn'] in SUBJ.get(prev['tense'], ())):
                 keys.append(None)
             elif attached:
                 keys.append('s:' + (seg['pgn'] or '?'))
@@ -202,14 +223,35 @@ def main():
             if k not in info:
                 info[k] = {'root': seg['root'], 'pos': seg['pos'], 'vf': seg['vf'], 'tags': seg['tags']}
 
-    # Kartenstapel in Lernreihenfolge
-    order, first = [], {}
+    # Themen (Reihenfolge der neuen Karten), dann übrige Wörter der Suren
+    themes, seen, ex_override = [], set(), {}
+    for line in open(os.path.join(TOOLS, 'themen.txt'), encoding='utf-8'):
+        line = line.rstrip('\n')
+        if not line.strip() or line.startswith('#'):
+            continue
+        if line.startswith('=='):
+            tid, title, sub = [x.strip() for x in line[2:].split('|')]
+            themes.append({'id': tid, 'title': title, 'sub': sub, 'keys': []})
+            continue
+        parts = line.split('\t')
+        k = nfc(parts[0].strip())
+        if len(parts) > 1 and parts[1].strip():
+            ex_override[k] = tuple(int(x) for x in parts[1].strip().split(':'))
+        if k not in freq:
+            print('Thema-Schlüssel nicht im Korpus:', k)
+            sys.exit(1)
+        if k not in seen:
+            themes[-1]['keys'].append(k)
+            seen.add(k)
+    rest = []
     for s in SURAS:
         for loc in (l for l in words if l[0] == s):
             for k in wkeys[loc]:
-                if k is not None and k not in first:
-                    first[k] = loc
-                    order.append(k)
+                if k is not None and k not in seen:
+                    seen.add(k)
+                    rest.append(k)
+    themes.append({'id': 'suren', 'title': 'Aus den Suren', 'sub': 'übrige Wörter aus Al-Fātiḥa und Suren 112–114', 'keys': rest})
+    order = [k for t in themes for k in t['keys']]
 
     missing = [k for k in order if k not in meanings]
     if missing:
@@ -218,41 +260,56 @@ def main():
             print('  ' + k + '\t' + '|'.join(sorted(info[k]['tags'])) + '\t' + str(freq[k]) + '×')
         sys.exit(1)
 
-    # Übersetzungen
+    # Beispielvers je Karte: zuerst aus den Lese-Suren, sonst der kürzeste Vers im Koran mit diesem Wort
+    vlen = collections.Counter((l[0], l[1]) for l in words)
+    first = {}
+    for loc, ks in wkeys.items():
+        for k in ks:
+            if k is None or k not in meanings:
+                continue
+            pref = 0 if loc[0] in SURAS else 1
+            n = vlen[(loc[0], loc[1])]
+            score = (pref, (n if n >= 3 else 99) + 4 * (len(words[loc]) - 1), loc)
+            if k not in first or score < first[k][0]:
+                first[k] = (score, loc)
+    first = {k: v[1] for k, v in first.items()}
+    for k, loc in ex_override.items():
+        assert loc in wkeys and k in wkeys[loc], ('Beispiel passt nicht', k, loc)
+        first[k] = loc
+
+    # Übersetzungen (ganzer Koran, nur benötigte Verse kommen in die Daten)
     trans = {}
-    for s in SURAS:
-        with open(fetch(TR_URL.format(s), os.path.join(CACHE, 'de_%d.json' % s)), encoding='utf-8') as f:
-            for v in json.load(f)['chapter']:
-                trans['%d:%d' % (v['chapter'], v['verse'])] = v['text']
+    with open(fetch(TR_URL, os.path.join(CACHE, 'de_all.json')), encoding='utf-8') as f:
+        for v in json.load(f)['quran']:
+            trans['%d:%d' % (v['chapter'], v['verse'])] = v['text']
 
     idx = {k: i for i, k in enumerate(order)}
     out_words, word_index, verses, suras = [], {}, {}, []
     missing_g = []
+    need = {(s, a) for s in SURAS for (s2, a) in vlen if s2 == s} | {(l[0], l[1]) for l in first.values()}
+    for (s, a) in sorted(need):
+        vk = '%d:%d' % (s, a)
+        wl = []
+        for loc in (l for l in words if l[0] == s and l[1] == a):
+            segs = words[loc]
+            ks = wkeys[loc]
+            lk = '%d:%d:%d' % loc
+            if s in SURAS and lk not in glosses:
+                missing_g.append(lk + '\t' + ''.join(x['t'] for x in segs))
+            cards = []
+            for k in ks:
+                if k is not None and k in idx and idx[k] not in cards:
+                    cards.append(idx[k])
+            word_index[loc] = len(out_words)
+            wl.append(len(out_words))
+            out_words.append({
+                'l': lk, 't': ''.join(x['t'] for x in segs), 'g': glosses.get(lk, ''),
+                'c': cards, 'd': describe(segs),
+            })
+        verses[vk] = {'w': wl, 'tr': trans.get(vk, '')}
     for s in sorted(SURAS):
-        locs = [l for l in words if l[0] == s]
-        nv = max(l[1] for l in locs)
-        for a in range(1, nv + 1):
-            vk = '%d:%d' % (s, a)
-            wl = []
-            for loc in (l for l in locs if l[1] == a):
-                segs = words[loc]
-                ks = wkeys[loc]
-                lk = '%d:%d:%d' % loc
-                if lk not in glosses:
-                    missing_g.append(lk + '\t' + ''.join(x['t'] for x in segs))
-                cards = []
-                for k in ks:
-                    if k is not None and idx[k] not in cards:
-                        cards.append(idx[k])
-                word_index[loc] = len(out_words)
-                wl.append(len(out_words))
-                out_words.append({
-                    'l': lk, 't': ''.join(x['t'] for x in segs), 'g': glosses.get(lk, ''),
-                    'c': cards, 'd': describe(segs),
-                })
-            verses[vk] = {'w': wl, 'tr': trans.get(vk, '')}
         ar, name, de = SURA_META[s]
-        suras.append({'n': s, 'ar': ar, 'name': name, 'de': de, 'v': nv})
+        suras.append({'n': s, 'ar': ar, 'name': name, 'de': de, 'v': max(a for (s2, a) in vlen if s2 == s)})
     if missing_g:
         print('Fehlende Glossen:')
         print('\n'.join(missing_g))
@@ -261,7 +318,7 @@ def main():
     cards = []
     for k in order:
         m, inf = meanings[k], info[k]
-        kind = {'p': 'Partikel', 'n': 'Nomen', 'v': 'Verb', 's': 'Endung', 'pr': 'Pronomen'}[k.split(':')[0]]
+        kind = {'p': 'Partikel', 'n': 'Nomen', 'v': 'Verb', 's': 'Endung', 'pr': 'Pronomen', 'd': 'Hinweiswort'}[k.split(':')[0]]
         if k.startswith('p:') and 'PREF' in inf['tags']:
             kind = 'Vorsilbe'
         c = {'id': k, 'ar': m['ar'], 'de': m['de'], 'k': kind, 'f': freq[k], 'ex': word_index[first[k]]}
@@ -274,6 +331,7 @@ def main():
         if k.startswith('v:'):
             c['st'] = ROMAN.get(inf['vf'] or 1, '?')
         cards.append(c)
+    themes_out = [{'id': t['id'], 'title': t['title'], 'sub': t['sub'], 'c': [idx[k] for k in t['keys']]} for t in themes]
 
     # Abdeckung des ganzen Korans: Wortgruppen, deren Karten alle im Stapel sind
     sig = collections.Counter()
@@ -285,7 +343,7 @@ def main():
 
     data = {
         'v': 1, 'total': total, 'cards': cards, 'words': out_words, 'verses': verses,
-        'suras': suras, 'cov': cov,
+        'suras': suras, 'themes': themes_out, 'cov': cov,
     }
     js = '/* erzeugt von tools/make_data.py – nicht von Hand bearbeiten */\nconst DATA=' + \
         json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n'

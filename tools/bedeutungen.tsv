@@ -21,7 +21,7 @@ v:هَدَى	هَدَى	rechtleiten, führen	يَهْدِي	Imperativ: اِهْ�
 s:1P	ـنَا	uns; unser
 n:صِراط	صِرَاط	Weg, Pfad
 n:مُسْتَقِيم	مُسْتَقِيم	gerade, aufrecht		aktives Partizip, Stamm X zu قَامَ – stehen
-n:الَّذِي	ٱلَّذِي	der, welcher (Relativpronomen)		Pl. ٱلَّذِينَ – diejenigen, die
+n:الَّذِي	ٱلَّذِي	der, welcher (Relativpronomen)		f. ٱلَّتِي · Pl. ٱلَّذِينَ
 v:أَنْعَمَ	أَنْعَمَ	Gunst erweisen (عَلَى – jemandem)	يُنْعِمُ	vgl. نِعْمَة – Gnade, Wohltat
 p:عَلَى	عَلَى	auf, über; gegen		mit Endung: عَلَيْهِ – auf ihm
 s:3MP	ـهُمْ	sie, ihnen; ihr (Pl.)		nach i-Laut: ـهِمْ (عَلَيْهِمْ)
@@ -60,3 +60,38 @@ v:وَلَدَ	وَلَدَ	zeugen, gebären	يَلِدُ	Passiv: يُولَدُ
 v:كانَ	كَانَ	sein	يَكُونُ
 s:3MS	ـهُ	ihn, ihm; sein		nach i-Laut: ـهِ (بِهِ)
 n:كُفُو	كُفُو	ebenbürtig, gleich
+# Thema h1: Hinweis- und Relativwörter, Verneinung
+d:nah:MS	هَٰذَا	dieser, dies (hier)		f. هَٰذِهِ · Pl. هَٰؤُلَاءِ
+d:fern:MS	ذَٰلِكَ	jener, das (dort)		f. تِلْكَ · Pl. أُولَٰئِكَ
+d:nah:FS	هَٰذِهِ	diese, dies (hier, f.)		auch für Sachen im Plural
+d:fern:FS	تِلْكَ	jene (dort, f.)		auch für Sachen im Plural
+d:nah:P	هَٰؤُلَاءِ	diese (Pl.)
+d:fern:P	أُولَٰئِكَ	jene (Pl.)
+n:الَّذِي:f	ٱلَّتِي	die, welche (f.)		auch für Sachen im Plural
+n:الَّذِي:pl	ٱلَّذِينَ	diejenigen, die
+p:إِلّا	إِلَّا	außer; (nach Verneinung) nur		لَا إِلَٰهَ إِلَّا ٱللَّه – es gibt keinen Gott außer Allah
+p:كَلّا	كَلَّا	keineswegs!, ganz und gar nicht
+p:لَن	لَنْ	nicht (Zukunft): wird nicht		mit Gegenwartsform: لَنْ يَفْعَلَ – er wird nicht tun
+p:ما	مَا	nicht		verneint, meist Vergangenheit: مَا قَالَ – er sagte nicht
+v:لَيْسَ	لَيْسَ	nicht sein		f. لَيْسَتْ · hat keine Gegenwartsform
+p:بَلَى	بَلَى	doch!, ja gewiss (auf verneinte Frage)
+n:دُون	دُونَ	außer, neben; unterhalb		مِنْ دُونِ ٱللَّه – außer Allah, statt Allah
+p:نَعَم	نَعَمْ	ja
+# Thema h2: Endungen und Personalwörter
+s:2MS	ـكَ	dich, dir; dein
+s:2MP	ـكُمْ	euch; euer
+s:1S	ـي / ـنِي	mich, mir; mein		ـنِي nach Verben: خَلَقَنِي – er hat mich erschaffen
+s:3FS	ـهَا	sie, ihr (Sg. f.); ihr		auch für Sachen im Plural
+s:3FP	ـهُنَّ	sie, ihnen; ihr (Pl. f.)
+s:2FS	ـكِ	dich, dir; dein (f.)
+s:3D	ـهُمَا	sie beide, ihnen beiden; ihr (Dual)
+s:2D	ـكُمَا	euch beide; euer (Dual)
+pr:3MP	هُمْ	sie (Pl.)
+pr:2MS	أَنْتَ	du
+pr:2MP	أَنْتُمْ	ihr
+pr:1S	أَنَا	ich
+pr:1P	نَحْنُ	wir
+pr:3FS	هِيَ	sie (Sg. f.)		auch für Sachen im Plural
+pr:3FP	هُنَّ	sie (Pl. f.)
+pr:3D	هُمَا	sie beide
+pr:2D	أَنْتُمَا	ihr beide
