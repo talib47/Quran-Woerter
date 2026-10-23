@@ -1,6 +1,6 @@
 "use strict";
 /* ================= Speicher (eigene Schlüssel, damit nichts mit anderen Apps unter talib47.github.io kollidiert) ================= */
-const KEY="qw-lernapp-v1", SOUND_KEY="qw-ton";
+const KEY="qw-lernapp-v1";
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
 function lsDel(k){ try{ localStorage.removeItem(k); }catch(e){} }
@@ -31,7 +31,6 @@ function dayIdx(ms){ const d=new Date(ms||Date.now()); return Math.floor((d.getT
 function dayKey(){ const d=new Date(Date.now()-3*36e5); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
 
 /* ================= Ton ================= */
-let soundOn=lsGet(SOUND_KEY)!=="0";
 const AUD=new Audio(); AUD.preload="none";
 function playUrls(urls,quiet){
   let i=0;
@@ -44,14 +43,6 @@ function verseUrls(key){ const [s,a]=key.split(":").map(Number);
   return [`https://everyayah.com/data/Husary_128kbps/${p3(s)}${p3(a)}.mp3`,`https://everyayah.com/data/Alafasy_128kbps/${p3(s)}${p3(a)}.mp3`]; }
 const playWord=(loc,quiet)=>playUrls(wordUrls(loc),quiet);
 const playVerse=key=>playUrls(verseUrls(key));
-function renderSnd(){
-  $("#snd").innerHTML=soundOn
-    ?`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>`
-    :`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>`;
-  $("#snd").setAttribute("aria-pressed",soundOn?"true":"false");
-}
-$("#snd").onclick=()=>{ soundOn=!soundOn; lsSet(SOUND_KEY,soundOn?"1":"0"); if(!soundOn) AUD.pause(); renderSnd(); toast(soundOn?"Ton an":"Ton aus"); };
-
 /* ================= Geräte-Abgleich über GitHub (Datei fortschritt.json im Zweig "fortschritt") =================
    Anders als in den Uni-Apps wird pro Karte zusammengeführt: Es gilt jeweils die zuletzt bewertete Fassung einer Karte.
    So geht nichts verloren, auch wenn zwei Geräte zwischendurch ohne Abgleich geübt haben. */

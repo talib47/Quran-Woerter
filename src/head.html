@@ -76,7 +76,7 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .bar{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--accent);border-radius:3px;transition:width .25s}
 .prog .n{font-size:.85rem;color:var(--muted);min-width:3.6em;text-align:right;font-variant-numeric:tabular-nums}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 18px;min-height:46vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;user-select:none;-webkit-user-select:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 18px;min-height:52vh;margin-bottom:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;user-select:none;-webkit-user-select:none}
 .card.front{cursor:pointer}
 .card.back{justify-content:flex-start}
 .word{font-size:4.2rem;line-height:2;padding-bottom:.42em;margin:0}
@@ -92,13 +92,15 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .tr{font-size:.92rem;color:var(--muted);margin:6px 0 0;line-height:1.4}
 .ref{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .play{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
-.grades{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
-.grades button{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 4px 8px;min-height:58px;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:650;font-size:.95rem}
-.grades button small{font-weight:500;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
-.grades button.g1{color:var(--bad)}
-.grades button.g3{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.grades button.g3 small{color:var(--accent-ink);opacity:.85}
-.reveal{margin-top:14px}
+.acts{position:fixed;left:0;right:0;bottom:0;z-index:4;display:flex;gap:10px;justify-content:center;padding:10px max(16px,env(safe-area-inset-left,0px)) calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 30%)}
+.acts .btn{flex:1;max-width:19rem;min-height:56px;font-size:1.05rem}
+.acts .btn.no{background:var(--surface);color:var(--bad);border:1px solid var(--line)}
+.card{transition:transform .2s}
+.card[data-sw="r"]{box-shadow:0 0 0 3px var(--good)}
+.card[data-sw="l"]{box-shadow:0 0 0 3px var(--bad)}
+.wrow{display:flex;align-items:center;justify-content:center;gap:4px}
+.play1{color:var(--accent)}
+.exl{margin-top:14px;font-size:.9rem}
 /* Suren */
 .slist{list-style:none;margin:0;padding:0}
 .slist li{margin-bottom:10px}
@@ -150,7 +152,6 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 <header class="top"><div class="tin">
   <button class="icon" id="back" aria-label="Zurück" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
   <span class="ttl" id="ttl">Üben</span>
-  <button class="icon" id="snd" aria-label="Ton an oder aus"></button>
 </div></header>
 <main id="app"></main>
 <nav class="tabs" id="tabs"><button data-v="home">Üben</button><button data-v="suras">Suren</button></nav>

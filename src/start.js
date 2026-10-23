@@ -11,7 +11,6 @@ function render(){
 }
 document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{ if(view==="round") round=null; go(b.dataset.v); });
 $("#back").onclick=()=>go("suras");
-renderSnd();
 initToken();
 render();
 if(ghToken) syncFromRemote().then(changed=>{ if(view!=="round") render(); });

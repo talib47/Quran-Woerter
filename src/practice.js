@@ -43,17 +43,16 @@ function startRound(){
 function flipCard(){
   if(!round||round.flip) return;
   round.flip=true; renderRound();
-  const c=CARDS[CARD_IX[round.q[round.i]]];
-  if(soundOn) playWord(WORDS[c.ex].l,true);
 }
+/* Zwei Bewertungen: gewusst (FSRS „Gut“) oder nicht gewusst („Nochmal“). Neue Karte „Kenne ich“ = „Einfach“, ohne Aufdecken. */
 function grade(g){
-  if(!round||!round.flip) return;
+  if(!round) return;
   const id=round.q[round.i], today=dayIdx();
   state.cards[id]=schedule(state.cards[id],g,today,true);
   const dk=dayKey(); state.days[dk]=(state.days[dk]||0)+1;
   save();
   if(g===1){ round.again[id]=(round.again[id]||0)+1; round.q.splice(Math.min(round.q.length,round.i+4),0,id); }
-  round.done++; round.i++; round.flip=false;
+  round.done++; round.i++; round.flip=false; round.ex=false;
   if(round.i>=round.q.length){ view="done"; render(); }
   else { renderRound(); window.scrollTo(0,0); }
 }
@@ -80,44 +79,51 @@ function renderHome(){
 function verseHTML(vk,hiWord){
   return DATA.verses[vk].w.map(wi=>`<span${wi===hiWord?' class="hl"':""}>${esc(WORDS[wi].t)}</span>`).join(" ");
 }
+const PLAY_SVG=`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
 function renderRound(){
   const id=round.q[round.i], c=CARDS[CARD_IX[id]], s=cst(id);
   const total=round.q.length, isNew=!s;
   const head=`<div class="prog"><div class="bar"><i style="width:${Math.round(round.i/total*100)}%"></i></div><span class="n">${round.i+1} / ${total}</span>
     <button class="icon" id="endR" aria-label="Runde beenden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>`;
   const affix=c.k==="Vorsilbe"||c.k==="Endung";
+  const tag=affix?`<div class="kind">${c.k}</div>`:isNew?`<div class="kind" style="color:var(--accent)">neu</div>`:"";
   if(!round.flip){
-    $("#app").innerHTML=`${head}<div class="card front" id="cardF">
-      <p class="ar word">${esc(c.ar)}</p>${affix?`<div class="kind">${c.k}</div>`:""}
-      ${isNew?`<div class="kind" style="margin-top:6px;color:var(--accent)">neu</div>`:""}
-      </div><button class="btn wide reveal" id="flip">Aufdecken</button>`;
-    $("#cardF").onclick=flipCard; $("#flip").onclick=flipCard;
+    $("#app").innerHTML=`${head}<div class="card front" id="card"><p class="ar word">${esc(c.ar)}</p>${tag}</div>
+      <div class="acts">${isNew?`<button class="btn ghost" id="known">Kenne ich</button>`:""}<button class="btn" id="flip">Aufdecken</button></div>`;
+    $("#flip").onclick=flipCard;
+    const k=$("#known"); if(k) k.onclick=()=>grade(4);
   } else {
     const w=WORDS[c.ex], vk=w.l.split(":").slice(0,2).join(":"), v=DATA.verses[vk];
-    const meta=[c.r?`Wurzel <span class="ai">${esc(c.r)}</span>`:"", `${c.f.toLocaleString("de-DE")}× im Koran`].filter(Boolean).join(" · ");
-    const verb=c.pr?`<div class="meta">Gegenwart <span class="ai">${esc(c.pr)}</span> · Stamm ${c.st}</div>`:"";
-    const today=dayIdx();
-    const prev=[1,2,3,4].map(g=>ivlLabel(schedule(s,g,today,false).due-today));
-    $("#app").innerHTML=`${head}<div class="card back">
-      <p class="ar word">${esc(c.ar)}</p>${affix?`<div class="kind">${c.k}</div>`:""}
+    const meta=[c.r?`Wurzel <span class="ai">${esc(c.r)}</span>`:"", c.pr?`Gegenwart <span class="ai">${esc(c.pr)}</span>`:"", c.st?`Stamm ${c.st}`:""].filter(Boolean).join(" · ");
+    $("#app").innerHTML=`${head}<div class="card back" id="card">
+      <div class="wrow"><p class="ar word">${esc(c.ar)}</p><button class="icon play1" id="pW" aria-label="Anhören">${PLAY_SVG}</button></div>${affix?`<div class="kind">${c.k}</div>`:""}
       <div class="mean">${mix(c.de)}</div>
-      <div class="meta">${meta}</div>${verb}
-      ${c.no?`<div class="note">${mix(c.no)}</div>`:""}
-      <div class="ex"><p class="ar vtext">${verseHTML(vk,c.ex)}</p>
-        <div class="ref">${vk} · ${esc(w.g)}</div>
-        ${v.tr?`<p class="tr">${esc(v.tr)}</p>`:""}
-        <div class="play"><button class="btn ghost sm" id="pW">▶ Wort</button><button class="btn ghost sm" id="pV">▶ Vers</button></div>
-      </div></div>
-      <div class="grades">
-        <button class="g1" data-g="1">Nochmal<small>${prev[0]}</small></button>
-        <button class="g2" data-g="2">Schwer<small>${prev[1]}</small></button>
-        <button class="g3" data-g="3">Gut<small>${prev[2]}</small></button>
-        <button class="g4" data-g="4">Einfach<small>${prev[3]}</small></button>
-      </div>`;
-    $("#pW").onclick=()=>playWord(w.l); $("#pV").onclick=()=>playVerse(vk);
-    document.querySelectorAll(".grades button").forEach(b=>b.onclick=()=>grade(+b.dataset.g));
+      ${meta?`<div class="meta">${meta}</div>`:""}
+      ${c.no?`<div class="meta">${mix(c.no)}</div>`:""}
+      ${round.ex?`<div class="ex"><p class="ar vtext">${verseHTML(vk,c.ex)}</p>
+        <div class="ref">${vk} · ${esc(w.g)} <button class="link" id="pV">▶ Vers</button></div>
+        ${v.tr?`<p class="tr">${esc(v.tr)}</p>`:""}</div>`
+      :`<button class="link exl" id="exT">Im Vers zeigen</button>`}
+      </div>
+      <div class="acts"><button class="btn no" id="g1">Nicht gewusst</button><button class="btn" id="g3">Gewusst</button></div>`;
+    $("#pW").onclick=e=>{ e.stopPropagation(); playWord(w.l); };
+    const pv=$("#pV"); if(pv) pv.onclick=()=>playVerse(vk);
+    const et=$("#exT"); if(et) et.onclick=()=>{ round.ex=true; renderRound(); };
+    $("#g1").onclick=()=>grade(1); $("#g3").onclick=()=>grade(3);
   }
+  bindSwipe($("#card"));
   $("#endR").onclick=()=>{ round=null; AUD.pause(); go("home"); };
+}
+/* Wischen: vorne in jede Richtung = aufdecken, hinten rechts = gewusst, links = nicht gewusst. Tippen vorne = aufdecken. */
+function bindSwipe(el){
+  let x0=null, y0=0, dx=0;
+  el.addEventListener("touchstart",e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; dx=0; el.style.transition="none"; },{passive:true});
+  el.addEventListener("touchmove",e=>{ if(x0===null) return; dx=e.touches[0].clientX-x0; const dy=e.touches[0].clientY-y0;
+    if(Math.abs(dx)>Math.abs(dy)){ el.style.transform=`translateX(${dx*0.6}px) rotate(${dx/40}deg)`; el.dataset.sw=dx>40?"r":dx<-40?"l":""; } },{passive:true});
+  el.addEventListener("touchend",()=>{ if(x0===null) return; x0=null; el.style.transition=""; el.style.transform=""; delete el.dataset.sw;
+    if(Math.abs(dx)<70) return;
+    if(!round.flip) flipCard(); else grade(dx>0?3:1); });
+  el.addEventListener("click",e=>{ if(!round.flip&&Math.abs(dx)<10&&!e.target.closest("button")) flipCard(); });
 }
 function renderDone(){
   const r=round||{done:0,fresh:0}, more=buildRound();
@@ -132,5 +138,6 @@ function renderDone(){
 document.addEventListener("keydown",e=>{
   if(view!=="round"||!round||e.metaKey||e.ctrlKey||e.altKey) return;
   if(!round.flip&&(e.key===" "||e.key==="Enter")){ e.preventDefault(); flipCard(); }
-  else if(round.flip&&/^[1-4]$/.test(e.key)){ e.preventDefault(); grade(+e.key); }
+  else if(round.flip&&(e.key==="ArrowRight"||e.key===" "||e.key==="2")){ e.preventDefault(); grade(3); }
+  else if(round.flip&&(e.key==="ArrowLeft"||e.key==="1")){ e.preventDefault(); grade(1); }
 });

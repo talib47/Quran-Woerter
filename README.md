@@ -13,7 +13,7 @@ python3 build.py             # src/ → index.html
 
 ## Zwei Bereiche
 
-- **Üben:** Karteikarten in Runden. Erst erinnern, dann aufdecken und selbst bewerten (Nochmal · Schwer · Gut · Einfach). Wiederholungsplan FSRS-5 wie in Anki. Neue Karten kommen umso mehr, je weniger gerade fällig ist; jede weitere Runde bringt neue dazu, so richtet sich das Tempo danach, wie viel geübt wird.
+- **Üben:** Karteikarten in Runden. Antippen oder wischen zum Aufdecken, dann „Gewusst“ (oder nach rechts wischen) bzw. „Nicht gewusst“ (nach links). Neue Karten, die man schon kennt: „Kenne ich“, dann kommen sie erst nach gut zwei Wochen wieder. Vers und Ton nur auf Wunsch. Wiederholungsplan FSRS-5 wie in Anki (gewusst = Gut, nicht gewusst = Nochmal, Kenne ich = Einfach). Neue Karten kommen umso mehr, je weniger gerade fällig ist.
 - **Suren:** Sure Vers für Vers, voll vokalisiert. Wort antippen → Bedeutung an der Stelle, Formangabe, Bestandteile mit ihren Karten. Versnummer → Übersetzung und Rezitation. Noch nicht gelernte Wörter sind gepunktet unterstrichen.
 
 ## Aufbau
@@ -46,7 +46,7 @@ Amiri Quran setzt Zeichen bis 1,42 em über und 0,76 em unter die Grundlinie (ge
 - Fortschritt liegt als `fortschritt.json` im Zweig `fortschritt` dieses Repos.
 - Gerät verbinden: `https://talib47.github.io/Quran-Woerter/#t=<GitHub-Schlüssel>` einmal öffnen. Der Schlüssel braucht Lese- und Schreibrechte (Contents) für dieses Repo.
 - Zusammengeführt wird pro Karte: Es gilt die jeweils zuletzt bewertete Fassung. Üben auf zwei Geräten ohne Abgleich verliert nichts.
-- Eigene Schlüssel: `qw-lernapp-v1`, `qw-gh-token`, `qw-ton`.
+- Eigene Schlüssel: `qw-lernapp-v1`, `qw-gh-token`.
 
 ## Quellen
 
