@@ -95,3 +95,80 @@ pr:3FS	هِيَ	sie (Sg. f.)		auch für Sachen im Plural
 pr:3FP	هُنَّ	sie (Pl. f.)
 pr:3D	هُمَا	sie beide
 pr:2D	أَنْتُمَا	ihr beide
+# Thema h3: Wo? · Fragen
+n:فَوْق	فَوْقَ	über, oberhalb
+n:تَحْت	تَحْتَ	unter, unterhalb		تَجْرِي مِنْ تَحْتِهَا ٱلْأَنْهَار – unter denen Flüsse fließen
+n:بَيْن	بَيْنَ	zwischen		بَيْنَ أَيْدِيهِمْ – vor ihnen
+n:خَلْف	خَلْفَ	hinter; nach
+n:أَمام	أَمَامَ	vor (räumlich)
+n:وَراء	وَرَاءَ	hinter
+n:يَمِين	يَمِين	Rechte, rechte Seite; Eid		Pl. أَيْمَان
+n:شِمال	شِمَال	Linke, linke Seite
+n:حَوْل	حَوْلَ	um … herum
+n:حَيْث	حَيْثُ	wo; wo auch immer
+n:مَن	مَنْ	wer?; wer, derjenige, der
+n:مَتَى	مَتَى	wann?
+n:أَيْن	أَيْنَ	wo?		أَيْنَمَا – wo auch immer
+n:كَيْف	كَيْفَ	wie?
+n:كَم	كَمْ	wie viel(e)?; wie viele!
+n:أَيّ	أَيّ	welcher?; jeder (der)
+n:أَنَّى	أَنَّى	wie?, woher?
+n:أ	أَ	Fragewort (am Satzanfang)		أَلَمْ – nicht?, أَفَلَا – (etwa) nicht?
+p:هَل	هَلْ	Fragewort: ob?; etwa?
+n:ماذا	مَاذَا	was?
+p:لَوْلا	لَوْلَا	wenn nicht; warum nicht?
+# Thema h4: Verschiedenes · Wann?
+n:ذُو	ذُو	Besitzer von, versehen mit		f. ذَاتُ · Pl. أُولُو / أُولِي
+n:أَهْل	أَهْل	Leute (von), Angehörige		أَهْلُ ٱلْكِتَاب – Leute der Schrift
+n:آل	آل	Familie, Sippe; Leute (von)		آلُ فِرْعَوْن – die Leute Pharaos
+p:أَلا	أَلَا	siehe!, wahrlich; (fragend) nicht?
+v:نِعْمَ	نِعْمَ	welch vorzüglicher …!		unveränderlich, ohne Gegenwart
+v:بِئْسَ	بِئْسَ	welch schlimmer …!		بِئْسَمَا – schlimm ist, was …
+n:مِثْل	مِثْل	gleich, wie; Gleiches
+n:مَثَل	مَثَل	Gleichnis, Beispiel		Pl. أَمْثَال
+n:قَبْل	قَبْلَ	vor (zeitlich)		مِنْ قَبْلُ – vorher
+n:بَعْد	بَعْدَ	nach (zeitlich)		مِنْ بَعْدُ – danach
+n:حِين	حِين	Zeit, Weile; zur Zeit (als)
+n:إِذ	إِذْ	als (Vergangenheit)		وَإِذْ قَالَ – und als … sagte
+p:ثُمّ	ثُمَّ	dann, darauf
+p:ف	فَـ	und (dann), so, also
+p:بَل	بَلْ	nein, vielmehr; sondern
+n:عِند	عِنْدَ	bei		عِنْدَ رَبِّهِمْ – bei ihrem Herrn
+n:لَدَى	لَدَى	bei
+n:لَدُن	لَدُنْ	von … her, bei		مِنْ لَدُنْهُ – von Ihm her
+p:إِن	إِنْ	wenn; (mit إِلَّا) nur		إِنْ هُوَ إِلَّا – er ist nichts als
+# Thema h5: Präpositionen
+p:عَن	عَنْ	von (… weg), über (ein Thema)
+p:ك	كَـ	wie		كَذَٰلِكَ – so
+p:إِلَى	إِلَى	zu, nach, bis		mit Endung: إِلَيْهِ – zu ihm
+p:حَتَّى	حَتَّى	bis; sodass
+n:مَع	مَعَ	mit, zusammen mit
+p:و:schwur	وَ	bei! (Schwur)		وَٱلْعَصْرِ – bei der Zeit
+p:ت	تَـ	bei! (Schwur)		تَٱللَّهِ – bei Allah
+p:ما:x	ـمَا	angehängtes مَا		إِنَّمَا – nur, wahrlich · كُلَّمَا – jedes Mal wenn · أَيْنَمَا – wo auch immer
+p:أَمّا	أَمَّا	was … betrifft		meist mit فَـ: أَمَّا … فَـ
+p:إِمّا	إِمَّا	entweder … oder; wenn (je)
+n:كُلَّما	كُلَّمَا	jedes Mal, wenn
+# Thema h6: Vorsilben fürs Verb · Inna
+p:قَد	قَدْ	schon, bereits (Vergangenheit); manchmal (Gegenwart)		لَقَدْ – ganz gewiss
+p:س	سَـ	wird (bald)		سَيَعْلَمُونَ – sie werden wissen
+p:سَوْف	سَوْفَ	wird (künftig)
+p:ل:betont	لَـ	wahrlich, gewiss (Betonung)		لَقَدْ، لَيَقُولُنَّ
+p:ل:soll	لِـ / لْـ	soll, möge (Aufforderung)		فَلْيَعْبُدُوا – so sollen sie dienen
+p:ل:damit	لِـ	damit, um zu		vor Gegenwartsform: لِيَعْلَمَ – damit er weiß
+p:أَم	أَمْ	oder (in Fragen); oder etwa?
+p:أَو	أَوْ	oder
+n:بَعْض	بَعْض	ein Teil, einige; einander		بَعْضُهُمْ بَعْضًا – einander
+n:كُلّ	كُلّ	jeder, alle; ganz
+p:إِنّ	إِنَّ	wahrlich, gewiss		mit Endung: إِنَّهُ، إِنَّا، إِنِّي
+p:أَنّ	أَنَّ	dass
+p:كَأَنّ	كَأَنَّ	als ob
+p:لٰكِنّ	لَٰكِنَّ	aber, jedoch
+p:لٰكِن	لَٰكِنْ	aber, jedoch
+p:لَعَلّ	لَعَلَّ	vielleicht, damit (hoffentlich)		لَعَلَّكُمْ تَتَّقُونَ – damit ihr gottesfürchtig werdet
+p:أَن	أَنْ	dass, zu (vor Verb)		أَنْ يَقُولَ – dass er sagt
+v:عَسَى	عَسَى	vielleicht, es kann sein		unveränderlich, ohne Gegenwart
+n:لَمّا	لَمَّا	als (Vergangenheit)
+p:لَو	لَوْ	wenn (unwirklich), wenn doch
+p:ي	يَا	o! (Anrede)
+p:أَيُّها	أَيُّهَا	o …! (nach يَا vor Wort mit ٱلْـ)		يَٰٓأَيُّهَا ٱلنَّاسُ – o ihr Menschen

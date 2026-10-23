@@ -136,6 +136,14 @@ def seg_keys(segs):
     dem = [i for i, sg in enumerate(segs) if 'DEM' in sg['tags']]
     for i, seg in enumerate(segs):
         tags = seg['tags']
+        # يَٰٓأَيُّهَا: أَيّ + هَا als ein Anredewort
+        nxt = segs[i + 1] if i + 1 < len(segs) else None
+        if seg['lem'] == 'أَيّ' and nxt is not None and 'ATT' in nxt['tags']:
+            keys.append('p:أَيُّها')
+            continue
+        if 'ATT' in tags and i > 0 and segs[i - 1]['lem'] == 'أَيّ':
+            keys.append(None)
+            continue
         if dem and ({'ATT', 'DIST', 'ADDR'} & tags or i in dem):
             # Hinweiswort (هَٰذَا، ذَٰلِكَ، تِلْكَ …) als ein Ganzes: nah/fern und Geschlecht/Zahl
             if i != dem[0]:

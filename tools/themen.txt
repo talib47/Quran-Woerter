@@ -46,3 +46,94 @@ pr:3FS
 pr:3FP
 pr:3D
 pr:2D
+
+== h3 | Wo? · Fragen | Ortsangaben und Fragewörter (Heft S. 3)
+n:فَوْق
+n:تَحْت
+n:بَيْن
+n:خَلْف	41:42:9
+n:أَمام
+n:وَراء
+n:يَمِين
+n:شِمال
+n:حَوْل
+n:حَيْث
+n:ما
+n:مَن
+n:مَتَى
+n:أَيْن
+n:كَيْف
+n:كَم
+n:أَيّ
+n:أَنَّى
+n:أ
+p:هَل
+n:ماذا
+p:لَوْلا
+
+== h4 | Verschiedenes · Wann? | Besitz, Zeitangaben, Bindewörter (Heft S. 4)
+n:ذُو
+n:أَهْل
+n:آل
+p:أَلا
+v:نِعْمَ
+v:بِئْسَ
+n:مِثْل
+n:مَثَل
+n:قَبْل
+n:بَعْد
+n:حِين
+n:إِذ
+n:إِذا
+p:ثُمّ
+p:ف
+p:بَل
+n:عِند
+n:لَدَى
+n:لَدُن
+p:إِن
+
+== h5 | Präpositionen | Präpositionen und Verbindungen mit مَا (Heft S. 5)
+p:ب
+p:عَن
+p:فِي
+p:ك
+p:ل
+p:مِن
+p:إِلَى
+p:حَتَّى
+p:عَلَى
+n:مَع
+p:و
+p:و:schwur
+p:ت
+p:ما:x	79:45:1
+p:أَمّا
+p:إِمّا
+n:كُلَّما
+
+== h6 | Vorsilben fürs Verb · Inna | قَدْ، سَـ، لَـ und إِنَّ mit Verwandten (Heft S. 6)
+p:قَد
+p:س
+p:سَوْف
+p:ل:betont
+p:ل:soll
+p:ل:damit
+p:ال
+p:أَم
+p:أَو
+n:بَعْض
+n:كُلّ
+p:إِنّ
+p:أَنّ
+p:كَأَنّ
+p:لٰكِنّ
+p:لٰكِن
+p:لَعَلّ
+p:أَن	96:7:1
+pr:إِيّا
+v:عَسَى
+n:لَمّا
+p:لَو
+p:ي	109:1:2
+p:أَيُّها	109:1:2
