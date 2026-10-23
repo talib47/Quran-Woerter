@@ -445,7 +445,8 @@ function renderHome(){
     ${today?`<p class="line">Heute: <b>${today}</b> ${today===1?"Karte":"Karten"}</p>`:""}
     <p class="line">Gelernt: <b>${knownCount()}</b> von ${CARDS.length} Karten</p>
     <p class="line">Koran: Du kennst <b>${pct(quranCoverage())}</b> aller Wörter</p>
-    ${syncBox()}`;
+    ${syncBox()}
+    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 23.10. 17:23</p>`;
   const g=$("#go"); if(g) g.onclick=startRound;
   bindSync();
 }
