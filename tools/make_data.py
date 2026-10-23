@@ -23,7 +23,7 @@ MORPH_URL = 'https://raw.githubusercontent.com/mustafa0x/quran-morphology/master
 TR_URL = 'https://raw.githubusercontent.com/fawazahmed0/quran-api/1/editions/deu-frankbubenheima.json'
 
 # Suren zum Lesen (Reiter „Suren“); ihre übrigen Wörter bilden das letzte Thema „Aus den Suren“
-SURAS = [1, 114, 113, 112]
+SURAS = [1, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105]
 # Reihenfolge der neuen Karten: Themen in tools/themen.txt (nach dem Heft „80 % der Koranwörter“)
 
 SURA_META = {
@@ -258,7 +258,7 @@ def main():
                 if k is not None and k not in seen:
                     seen.add(k)
                     rest.append(k)
-    themes.append({'id': 'suren', 'title': 'Aus den Suren', 'sub': 'übrige Wörter aus Al-Fātiḥa und Suren 112–114', 'keys': rest})
+    themes.append({'id': 'suren', 'title': 'Aus den Suren', 'sub': 'übrige Wörter aus Al-Fātiḥa und den Suren 105–114', 'keys': rest})
     order = [k for t in themes for k in t['keys']]
 
     missing = [k for k in order if k not in meanings]

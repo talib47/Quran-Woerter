@@ -2,7 +2,7 @@
 
 Live: https://talib47.github.io/Quran-Woerter/
 
-Wortschatz des Korans lernen, mit den Suren, die ich am häufigsten rezitiere: zuerst Al-Fātiḥa, dann die letzten Suren von 114 rückwärts. Danach die häufigsten Wörter bis 80 % aller Wörter im Koran, später Stämme (Awzān) und Konjugation. Konzept: Projekt „Arabisch“ in Claude.
+Wortschatz des Korans lernen, gegliedert wie das Heft „80 % der Koranwörter“; zum Lesen Al-Fātiḥa und die Suren 105–114. Danach die häufigsten Wörter bis 80 % aller Wörter im Koran, später Stämme (Awzān) und Konjugation. Konzept: Projekt „Arabisch“ in Claude.
 
 Eine Datei (`index.html`, Vanilla-JS, kein Framework), gebaut aus den Modulen in `src/`:
 
