@@ -14,7 +14,7 @@ n:مالِك	مَالِك	Herrscher, Besitzer		aktives Partizip zu مَلَكَ 
 n:يَوْم	يَوْم	Tag		Pl. أَيَّام
 n:دِين	دِين	Religion; Gericht, Vergeltung		يَوْمُ ٱلدِّين – Tag des Gerichts
 pr:إِيّا	إِيَّا	nur …, … allein (betont das Objekt)		إِيَّاكَ – dich allein
-v:عَبَدَ	عَبَدَ	dienen, anbeten	يَعْبُدُ
+v:عَبَدَ	عَبَدَ	dienen, anbeten	يَعْبُدُ	Maṣdar عِبَادَة
 p:و	وَ	und
 v:اسْتَعِينُ	اِسْتَعَانَ	um Hilfe bitten	يَسْتَعِينُ	Stamm X zur Wurzel ع و ن (Hilfe)
 v:هَدَى	هَدَى	rechtleiten, führen	يَهْدِي	Imperativ: اِهْدِ – leite!
@@ -44,7 +44,7 @@ n:صَدْر	صَدْر	Brust		Pl. صُدُور
 n:جِنَّة	جِنَّة	die Dschinn (Gesamtheit)
 n:فَلَق	فَلَق	Tagesanbruch
 n:ما	مَا	was; das, was
-v:خَلَقَ	خَلَقَ	erschaffen	يَخْلُقُ
+v:خَلَقَ	خَلَقَ	erschaffen	يَخْلُقُ	Maṣdar خَلْق
 n:غاسِق	غَاسِق	Dunkelheit, finstere Nacht		aktives Partizip zu غَسَقَ – finster werden
 n:إِذا	إِذَا	wenn, sobald
 v:وَقَبَ	وَقَبَ	hereinbrechen (Dunkelheit)	يَقِبُ
@@ -367,7 +367,7 @@ n:وَلِيّ	وَلِيّ	Schutzherr, Freund		Pl. أَوْلِيَاء
 v:تَبَّ	تَبَّ	zugrunde gehen	يَتِبُّ	تَبَّتْ يَدَا – zugrunde gehen sollen die Hände
 n:لَهَب	لَهَب	Flamme		أَبُو لَهَب
 v:أَغْنَى	أَغْنَى	nützen; reich machen	يُغْنِي	مَا أَغْنَى عَنْهُ – was nützte ihm
-v:كَسَبَ	كَسَبَ	erwerben, verdienen	يَكْسِبُ
+v:كَسَبَ	كَسَبَ	erwerben, verdienen	يَكْسِبُ	Maṣdar كَسْب
 v:يَصْلَى	صَلِيَ	(einem Feuer) ausgesetzt sein, darin brennen	يَصْلَى
 n:حَمّالَة	حَمَّالَة	Trägerin		حَمَّالَةَ ٱلْحَطَب – Brennholzträgerin
 n:حَطَب	حَطَب	Brennholz
@@ -378,7 +378,7 @@ v:جاءَ	جَاءَ	kommen	يَجِيءُ	جَاءَ بِـ – bringen
 n:نَصْر	نَصْر	Hilfe, Sieg
 n:فَتْح	فَتْح	Sieg, Eroberung; Öffnung
 v:رَأَى	رَأَى	sehen	يَرَى	أَلَمْ تَرَ – siehst du nicht? · أَرَأَيْتَ – hast du gesehen?
-v:دَخَلَ	دَخَلَ	eintreten	يَدْخُلُ
+v:دَخَلَ	دَخَلَ	eintreten	يَدْخُلُ	Maṣdar دُخُول
 n:فَوْج	فَوْج	Schar		Pl. أَفْوَاج
 v:سَبَّحَ	سَبَّحَ	lobpreisen	يُسَبِّحُ	سُبْحَانَ ٱللَّه
 v:اسْتَغْفَرَ	اِسْتَغْفَرَ	um Vergebung bitten	يَسْتَغْفِرُ	zu غَفَرَ – vergeben
@@ -409,10 +409,10 @@ v:أَطْعَمَ	أَطْعَمَ	speisen, ernähren	يُطْعِمُ	vgl. ط�
 n:جُوع	جُوع	Hunger
 v:آمَنَ	آمَنَ	glauben (بِـ an); Sicherheit geben (مِنْ vor)	يُؤْمِنُ
 n:خَوْف	خَوْف	Furcht
-v:فَعَلَ	فَعَلَ	tun, machen	يَفْعَلُ
+v:فَعَلَ	فَعَلَ	tun, machen	يَفْعَلُ	Maṣdar فِعْل
 n:أَصْحاب	أَصْحَاب	Gefährten; Leute (von)		Sg. صَاحِب · أَصْحَابُ ٱلْفِيل
 n:فِيل	فِيل	Elefant
-v:جَعَلَ	جَعَلَ	machen (zu); setzen	يَجْعَلُ
+v:جَعَلَ	جَعَلَ	machen (zu); setzen	يَجْعَلُ	Maṣdar جَعْل
 n:كَيْد	كَيْد	List
 n:تَضْلِيل	تَضْلِيل	Fehlschlag, Irreführung		Maṣdar zu ضَلَّ – irregehen
 v:أَرْسَلَ	أَرْسَلَ	senden	يُرْسِلُ	vgl. رَسُول – Gesandter
@@ -423,3 +423,56 @@ n:حِجارَة	حِجَارَة	Steine
 n:سِجِّيل	سِجِّيل	gebrannter Lehm
 n:عَصْف	عَصْف	Halme, Spreu
 n:مَأْكُول	مَأْكُول	abgefressen		passives Partizip zu أَكَلَ – essen
+# Verben Heft S. 15–19 (Notiz: Maṣdar)
+v:فَتَحَ	فَتَحَ	öffnen; Sieg schenken	يَفْتَحُ	Maṣdar فَتْح
+v:بَعَثَ	بَعَثَ	senden; auferwecken	يَبْعَثُ	Maṣdar بَعْث
+v:جَمَعَ	جَمَعَ	sammeln, versammeln	يَجْمَعُ	Maṣdar جَمْع
+v:ذَهَبَ	ذَهَبَ	gehen; (بِـ) wegnehmen	يَذْهَبُ	Maṣdar ذَهَاب
+v:رَفَعَ	رَفَعَ	erheben, erhöhen	يَرْفَعُ	Maṣdar رَفْع
+v:سَحَرُ	سَحَرَ	verzaubern	يَسْحَرُ	Maṣdar سِحْر · سَاحِر – Zauberer
+v:صَلَحَ	صَلَحَ	rechtschaffen sein	يَصْلُحُ	Maṣdar صَلَاح · صَالِح – rechtschaffen
+v:لَعَنَ	لَعَنَ	verfluchen	يَلْعَنُ	Maṣdar لَعْن · لَعْنَة – Fluch
+v:نَفَعَ	نَفَعَ	nützen	يَنْفَعُ	Maṣdar نَفْع
+v:نَصَرَ	نَصَرَ	helfen, beistehen	يَنْصُرُ	Maṣdar نَصْر
+v:بَلَغَ	بَلَغَ	erreichen	يَبْلُغُ	Maṣdar بُلُوغ
+v:تَرَكَ	تَرَكَ	verlassen, zurücklassen	يَتْرُكُ	Maṣdar تَرْك
+v:حَشَرَ	حَشَرَ	versammeln (zum Gericht)	يَحْشُرُ	Maṣdar حَشْر
+v:حَكَمَ	حَكَمَ	urteilen, entscheiden	يَحْكُمُ	Maṣdar حُكْم
+v:خَرَجَ	خَرَجَ	hinausgehen	يَخْرُجُ	Maṣdar خُرُوج
+v:يَخْلُدْ	خَلَدَ	ewig bleiben	يَخْلُدُ	Maṣdar خُلُود
+n:خالِد	خَالِد	ewig bleibend		Pl. خَالِدُونَ / خَالِدِينَ – darin ewig bleibend
+v:ذَكَرَ	ذَكَرَ	gedenken, erwähnen	يَذْكُرُ	Maṣdar ذِكْر
+v:رَزَقَ	رَزَقَ	versorgen	يَرْزُقُ	Maṣdar رِزْق
+v:سَجَدَ	سَجَدَ	sich niederwerfen	يَسْجُدُ	Maṣdar سُجُود
+v:يَشْعُرُ	شَعَرَ	merken, wahrnehmen	يَشْعُرُ	وَهُمْ لَا يَشْعُرُونَ – ohne dass sie es merken
+v:شَكَرَ	شَكَرَ	danken	يَشْكُرُ	Maṣdar شُكْر
+v:صَدَقَ	صَدَقَ	die Wahrheit sagen	يَصْدُقُ	Maṣdar صِدْق · صَادِق – wahrhaftig
+v:فَسَقَ	فَسَقَ	frevelhaft sein	يَفْسُقُ	Maṣdar فِسْق · فَاسِق – Frevler
+v:قَتَلَ	قَتَلَ	töten	يَقْتُلُ	Maṣdar قَتْل
+v:قَعَدَ	قَعَدَ	sitzen; zurückbleiben	يَقْعُدُ	Maṣdar قُعُود
+v:كَتَبَ	كَتَبَ	schreiben; vorschreiben	يَكْتُبُ	Maṣdar كِتَابَة · كُتِبَ عَلَيْكُمْ – euch ist vorgeschrieben
+v:كَفَرَ	كَفَرَ	ungläubig sein, leugnen; undankbar sein	يَكْفُرُ	Maṣdar كُفْر
+v:مَكَرَ	مَكَرَ	Ränke schmieden	يَمْكُرُ	Maṣdar مَكْر
+v:نَظَرَ	نَظَرَ	schauen; warten	يَنْظُرُ	Maṣdar نَظَر
+v:ضَرَبَ	ضَرَبَ	schlagen; (مَثَلًا) ein Gleichnis prägen	يَضْرِبُ	Maṣdar ضَرْب
+v:حَمَلَ	حَمَلَ	tragen	يَحْمِلُ	Maṣdar حَمْل
+v:صَبَرَ	صَبَرَ	geduldig sein	يَصْبِرُ	Maṣdar صَبْر
+v:ظَلَمَ	ظَلَمَ	Unrecht tun	يَظْلِمُ	Maṣdar ظُلْم
+n:ظالِم	ظَالِم	ungerecht; Unrechttuender		Pl. ظَالِمُونَ / ظَالِمِينَ
+v:عَرَفَ	عَرَفَ	erkennen, kennen	يَعْرِفُ	Maṣdar مَعْرِفَة
+v:عَقَلُ	عَقَلَ	begreifen, verstehen	يَعْقِلُ	أَفَلَا تَعْقِلُونَ – begreift ihr denn nicht?
+v:غَفَرَ	غَفَرَ	vergeben	يَغْفِرُ	Maṣdar مَغْفِرَة
+v:قَدَرَ	قَدَرَ	bemessen; vermögen	يَقْدِرُ	Maṣdar قَدْر
+v:كَذَبَ	كَذَبَ	lügen	يَكْذِبُ	Maṣdar كَذِب
+v:مَلَكَتْ	مَلَكَ	besitzen, verfügen über	يَمْلِكُ	Maṣdar مُلْك
+v:سَمِعَ	سَمِعَ	hören	يَسْمَعُ	Maṣdar سَمْع
+v:يَحْزُن	حَزِنَ	traurig sein	يَحْزَنُ	لَا تَحْزَنْ – sei nicht traurig · Maṣdar حُزْن
+v:حَسِبَ	حَسِبَ	meinen, glauben	يَحْسَبُ	أَيَحْسَبُ – meint er etwa?
+v:حَفِظَ	حَفِظَ	bewahren, hüten	يَحْفَظُ	Maṣdar حِفْظ
+v:خَسِرَ	خَسِرَ	verlieren, Verlust erleiden	يَخْسَرُ	Maṣdar خُسْر
+v:رَحِمَ	رَحِمَ	sich erbarmen	يَرْحَمُ	Maṣdar رَحْمَة
+v:شَهِدَ	شَهِدَ	bezeugen; anwesend sein	يَشْهَدُ	Maṣdar شَهَادَة
+v:عَلِمَ	عَلِمَ	wissen	يَعْلَمُ	Maṣdar عِلْم
+v:عَمِلَ	عَمِلَ	tun, handeln	يَعْمَلُ	Maṣdar عَمَل
+v:كَرِهَ	كَرِهَ	verabscheuen	يَكْرَهُ	Maṣdar كُرْه
+v:بَصُرَتْ	بَصُرَ	sehen, erblicken	يَبْصُرُ	Maṣdar بَصَر
