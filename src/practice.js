@@ -74,7 +74,7 @@ function renderHome(){
   let hero;
   if(due||fresh){
     hero=`<div class="block"><div class="nums"><div><b>${due}</b><span>fällig</span></div><div><b>${fresh}</b><span>neu</span></div></div>
-      ${fresh?`<p class="muted small" style="margin:-6px 0 14px">Neue Karten aus: <b style="color:var(--ink)">${esc(curTheme().title)}</b></p>`:""}
+      ${fresh?`<p class="muted small" style="margin:-6px 0 14px">Neue Karten aus: <b style="color:var(--ink)">${mix(curTheme().title)}</b></p>`:""}
       <button class="btn wide" id="go">${today?"Weiter üben":"Üben"}</button></div>`;
   } else {
     const nx=nextDueInfo();
