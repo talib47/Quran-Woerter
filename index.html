@@ -68,6 +68,10 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .nums span{color:var(--muted);font-size:.9rem}
 .line{margin:6px 2px;color:var(--muted);font-size:.92rem}
 .line b{color:var(--ink);font-weight:650}
+.cov{margin:14px 0 4px}
+.covbar{position:relative;height:8px;margin:6px 2px 0;background:var(--line);border-radius:4px}
+.covbar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.covbar s{position:absolute;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:var(--muted);border-radius:1px}
 .sync{margin-top:22px;font-size:.85rem;color:var(--muted)}
 .sync a,.link{color:var(--accent);text-decoration:underline;text-underline-offset:2px;background:none;border:0;padding:0;font-size:inherit}
 .sync textarea{width:100%;min-height:64px;margin:8px 0;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);padding:8px;font:.85rem ui-monospace,Menlo,monospace}
@@ -480,6 +484,7 @@ function undoCard(){
 }
 /* ================= Ansichten ================= */
 function renderHome(){
+  const cov=quranCoverage(), covMax=DATA.cov.reduce((a,g)=>a+g[0],0)/DATA.total;
   const due=dueCards().length, fresh=freshCards().length, today=state.days[dayKey()]||0;
   let hero;
   if(due||fresh){
@@ -493,9 +498,11 @@ function renderHome(){
   $("#app").innerHTML=`${hero}
     ${today?`<p class="line">Heute: <b>${today}</b> ${today===1?"Karte":"Karten"}</p>`:""}
     <p class="line">Gelernt: <b>${knownCount()}</b> von ${CARDS.length} Karten</p>
-    <p class="line">Koran: Du kennst <b>${pct(quranCoverage())}</b> aller Wörter</p>
+    <div class="cov"><p class="line">Koran: Du kennst <b>${pct(cov)}</b> aller Wörter</p>
+      <div class="covbar"><i style="width:${(cov*100).toFixed(1)}%"></i><s style="left:${(covMax*100).toFixed(1)}%"></s></div>
+      <p class="line" style="margin-top:6px;font-size:.8rem">Ziel mit allen Karten: ${pct(covMax)}</p></div>
     ${syncBox()}
-    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 26.10. 01:54</p>`;
+    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 26.10. 01:59</p>`;
   const g=$("#go"); if(g) g.onclick=startRound;
   bindSync();
 }
@@ -687,7 +694,7 @@ if(ghToken) syncFromRemote().then(changed=>{ if(view!=="round") render(); });
    GitHub Pages liefert die Seite bis zu 10 Minuten aus dem Zwischenspeicher, und die Home-Bildschirm-App
    hält sie noch länger. Deshalb fragt die App beim Öffnen und beim Zurückkehren die aktuelle Fassung ab
    (am Zwischenspeicher vorbei) und lädt sich neu, wenn es eine neuere gibt. */
-const BUILD="20261026015423";
+const BUILD="20261026015934";
 async function checkUpdate(){
   if(view==="round") return;
   try{

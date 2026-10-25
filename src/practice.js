@@ -79,6 +79,7 @@ function undoCard(){
 }
 /* ================= Ansichten ================= */
 function renderHome(){
+  const cov=quranCoverage(), covMax=DATA.cov.reduce((a,g)=>a+g[0],0)/DATA.total;
   const due=dueCards().length, fresh=freshCards().length, today=state.days[dayKey()]||0;
   let hero;
   if(due||fresh){
@@ -92,7 +93,9 @@ function renderHome(){
   $("#app").innerHTML=`${hero}
     ${today?`<p class="line">Heute: <b>${today}</b> ${today===1?"Karte":"Karten"}</p>`:""}
     <p class="line">Gelernt: <b>${knownCount()}</b> von ${CARDS.length} Karten</p>
-    <p class="line">Koran: Du kennst <b>${pct(quranCoverage())}</b> aller Wörter</p>
+    <div class="cov"><p class="line">Koran: Du kennst <b>${pct(cov)}</b> aller Wörter</p>
+      <div class="covbar"><i style="width:${(cov*100).toFixed(1)}%"></i><s style="left:${(covMax*100).toFixed(1)}%"></s></div>
+      <p class="line" style="margin-top:6px;font-size:.8rem">Ziel mit allen Karten: ${pct(covMax)}</p></div>
     ${syncBox()}
     <p class="muted" style="font-size:.75rem;margin-top:18px">Stand __STAND__</p>`;
   const g=$("#go"); if(g) g.onclick=startRound;
