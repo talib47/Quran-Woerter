@@ -1,40 +1,40 @@
 # Karten: Schlüssel (aus dem Korpus) · Anzeige · Bedeutung · Gegenwart (Verben) · Notiz
 # Schlüssel: p: Partikel/Vorsilbe, n: Nomen, v: Verb, s: Endung, pr: freies Pronomen
-p:ب	بِـ	mit, durch; in; bei
+p:ب	بِـ	mit
 n:اسْم	اِسْم	Name		Pl. أَسْمَاء
 n:اللَّه	ٱللَّه	Allah
-p:ال	ٱلْـ	der, die, das (bestimmter Artikel)
+p:ال	ٱلْـ	der, die, das
 n:رَحْمٰن	رَحْمٰن	der Allerbarmer (ar-Raḥmān)
 n:رَحِيم	رَحِيم	barmherzig; der Barmherzige
 n:حَمْد	حَمْد	Lob, Preis
-p:ل	لِـ	für, zu; gehört (jemandem)		mit Endung: لَهُ – ihm, für ihn
+p:ل	لِـ	für
 n:رَبّ	رَبّ	Herr (der erschafft, versorgt und lenkt)
 n:عالَم	عَالَم	Welt		Pl. عَالَمُون / عَالَمِين – die Welten, alle Geschöpfe
 n:مالِك	مَالِك	Herrscher, Besitzer		aktives Partizip zu مَلَكَ – besitzen, herrschen
 n:يَوْم	يَوْم	Tag		Pl. أَيَّام
 n:دِين	دِين	Religion; Gericht, Vergeltung		يَوْمُ ٱلدِّين – Tag des Gerichts
-pr:إِيّا	إِيَّا	nur …, … allein (betont das Objekt)		إِيَّاكَ – dich allein
+pr:إِيّا	إِيَّا	allein		إِيَّاكَ – dich allein
 v:عَبَدَ	عَبَدَ	dienen, anbeten	يَعْبُدُ	Maṣdar عِبَادَة
 p:و	وَ	und
 v:اسْتَعِينُ	اِسْتَعَانَ	um Hilfe bitten	يَسْتَعِينُ	Stamm X zur Wurzel ع و ن (Hilfe)
 v:هَدَى	هَدَى	rechtleiten, führen	يَهْدِي	Imperativ: اِهْدِ – leite!
-s:1P	ـنَا	uns; unser
+s:1P	ـنَا	unser		am Verb: uns
 n:صِراط	صِرَاط	Weg, Pfad
 n:مُسْتَقِيم	مُسْتَقِيم	gerade, aufrecht		aktives Partizip, Stamm X zu قَامَ – stehen
-n:الَّذِي	ٱلَّذِي	der, welcher (Relativpronomen)		f. ٱلَّتِي · Pl. ٱلَّذِينَ
+n:الَّذِي	ٱلَّذِي	welcher		f. ٱلَّتِي · Pl. ٱلَّذِينَ
 v:أَنْعَمَ	أَنْعَمَ	Gunst erweisen (عَلَى – jemandem)	يُنْعِمُ	vgl. نِعْمَة – Gnade, Wohltat
-p:عَلَى	عَلَى	auf, über; gegen		mit Endung: عَلَيْهِ – auf ihm
-s:3MP	ـهُمْ	sie, ihnen; ihr (Pl.)		nach i-Laut: ـهِمْ (عَلَيْهِمْ)
-n:غَيْر	غَيْر	anders als; nicht, außer
+p:عَلَى	عَلَى	auf
+s:3MP	ـهُمْ	ihr		Plural · am Verb: sie
+n:غَيْر	غَيْر	anders als
 n:مَغْضُوب	مَغْضُوب	dem gezürnt wird (mit عَلَيْهِ)		passives Partizip zu غَضِبَ – zürnen
-p:لا	لَا	nicht; kein
+p:لا	لَا	nicht
 n:ضالّ	ضَالّ	irregehend; der Irrende		aktives Partizip zu ضَلَّ – irregehen
 v:قالَ	قَالَ	sagen	يَقُولُ	Imperativ: قُلْ – sag!
 v:عُذْ	عَاذَ	Zuflucht suchen (بِـ – bei)	يَعُوذُ	أَعُوذُ – ich suche Zuflucht
 n:ناس	نَاس	Menschen, Leute
 n:مَلِك	مَلِك	König
 n:إِلٰه	إِلٰه	Gott, Gottheit
-p:مِن	مِنْ	von, aus; vor (bei Zuflucht)
+p:مِن	مِنْ	von
 n:شَرّ	شَرّ	Übel, Böses
 n:وَسْواس	وَسْوَاس	Einflüsterer; Einflüsterung
 n:خَنّاس	خَنَّاس	der sich zurückzieht (sobald Allahs gedacht wird)
@@ -43,10 +43,10 @@ p:فِي	فِي	in
 n:صَدْر	صَدْر	Brust		Pl. صُدُور
 n:جِنَّة	جِنَّة	die Dschinn (Gesamtheit)
 n:فَلَق	فَلَق	Tagesanbruch
-n:ما	مَا	was; das, was
+n:ما	مَا	was
 v:خَلَقَ	خَلَقَ	erschaffen	يَخْلُقُ	Maṣdar خَلْق
 n:غاسِق	غَاسِق	Dunkelheit, finstere Nacht		aktives Partizip zu غَسَقَ – finster werden
-n:إِذا	إِذَا	wenn, sobald
+n:إِذا	إِذَا	wenn
 v:وَقَبَ	وَقَبَ	hereinbrechen (Dunkelheit)	يَقِبُ
 n:نَفّاثَة	نَفَّاثَة	Bläserin (in Knoten)		Pl. نَفَّاثَات
 n:عُقْدَة	عُقْدَة	Knoten		Pl. عُقَد
@@ -55,123 +55,123 @@ v:حَسَدَ	حَسَدَ	beneiden	يَحْسُدُ
 pr:3MS	هُوَ	er
 n:أَحَد	أَحَد	einer; (verneint) niemand
 n:صَمَد	صَمَد	aṣ-Ṣamad: der Unabhängige, auf den alle angewiesen sind
-p:لَم	لَمْ	nicht (verneint Vergangenes)		mit Gegenwartsform: لَمْ يَلِدْ – er hat nicht gezeugt
+p:لَم	لَمْ	nicht		verneint die Vergangenheit
 v:وَلَدَ	وَلَدَ	zeugen, gebären	يَلِدُ	Passiv: يُولَدُ – gezeugt, geboren werden
 v:كانَ	كَانَ	sein	يَكُونُ
-s:3MS	ـهُ	ihn, ihm; sein		nach i-Laut: ـهِ (بِهِ)
+s:3MS	ـهُ	sein		am Verb: ihn
 n:كُفُو	كُفُو	ebenbürtig, gleich
 # Thema h1: Hinweis- und Relativwörter, Verneinung
-d:nah:MS	هَٰذَا	dieser, dies (hier)		f. هَٰذِهِ · Pl. هَٰؤُلَاءِ
-d:fern:MS	ذَٰلِكَ	jener, das (dort)		f. تِلْكَ · Pl. أُولَٰئِكَ
-d:nah:FS	هَٰذِهِ	diese, dies (hier, f.)		auch für Sachen im Plural
-d:fern:FS	تِلْكَ	jene (dort, f.)		auch für Sachen im Plural
-d:nah:P	هَٰؤُلَاءِ	diese (Pl.)
-d:fern:P	أُولَٰئِكَ	jene (Pl.)
-n:الَّذِي:f	ٱلَّتِي	die, welche (f.)		auch für Sachen im Plural
+d:nah:MS	هَٰذَا	dieser		f. هَٰذِهِ · Pl. هَٰؤُلَاءِ
+d:fern:MS	ذَٰلِكَ	jener		f. تِلْكَ · Pl. أُولَٰئِكَ
+d:nah:FS	هَٰذِهِ	diese		weiblich · auch für Sachen im Plural
+d:fern:FS	تِلْكَ	jene		weiblich · auch für Sachen im Plural
+d:nah:P	هَٰؤُلَاءِ	diese		Plural
+d:fern:P	أُولَٰئِكَ	jene		Plural
+n:الَّذِي:f	ٱلَّتِي	welche		weiblich · auch für Sachen im Plural
 n:الَّذِي:pl	ٱلَّذِينَ	diejenigen, die
-p:إِلّا	إِلَّا	außer; (nach Verneinung) nur		لَا إِلَٰهَ إِلَّا ٱللَّه – es gibt keinen Gott außer Allah
-p:كَلّا	كَلَّا	keineswegs!, ganz und gar nicht
-p:لَن	لَنْ	nicht (Zukunft): wird nicht		mit Gegenwartsform: لَنْ يَفْعَلَ – er wird nicht tun
-p:ما	مَا	nicht		verneint, meist Vergangenheit: مَا قَالَ – er sagte nicht
-v:لَيْسَ	لَيْسَ	nicht sein		f. لَيْسَتْ · hat keine Gegenwartsform
-p:بَلَى	بَلَى	doch!, ja gewiss (auf verneinte Frage)
-n:دُون	دُونَ	außer, neben; unterhalb		مِنْ دُونِ ٱللَّه – außer Allah, statt Allah
+p:إِلّا	إِلَّا	außer		nach Verneinung: nur
+p:كَلّا	كَلَّا	keineswegs!
+p:لَن	لَنْ	wird nicht		verneint die Zukunft
+p:ما	مَا	nicht		meist Vergangenheit
+v:لَيْسَ	لَيْسَ	ist nicht		f. لَيْسَتْ
+p:بَلَى	بَلَى	doch!		Antwort auf verneinte Frage
+n:دُون	دُونَ	statt		مِنْ دُونِ ٱللَّه – statt Allah
 p:نَعَم	نَعَمْ	ja
 # Thema h2: Endungen und Personalwörter
-s:2MS	ـكَ	dich, dir; dein
-s:2MP	ـكُمْ	euch; euer
-s:1S	ـي / ـنِي	mich, mir; mein		ـنِي nach Verben: خَلَقَنِي – er hat mich erschaffen
-s:3FS	ـهَا	sie, ihr (Sg. f.); ihr		auch für Sachen im Plural
-s:3FP	ـهُنَّ	sie, ihnen; ihr (Pl. f.)
-s:2FS	ـكِ	dich, dir; dein (f.)
-s:3D	ـهُمَا	sie beide, ihnen beiden; ihr (Dual)
-s:2D	ـكُمَا	euch beide; euer (Dual)
-pr:3MP	هُمْ	sie (Pl.)
+s:2MS	ـكَ	dein		am Verb: dich
+s:2MP	ـكُمْ	euer		am Verb: euch
+s:1S	ـي / ـنِي	mein		am Verb ـنِي: mich
+s:3FS	ـهَا	ihr		weiblich · am Verb: sie
+s:3FP	ـهُنَّ	ihr		Plural weiblich · am Verb: sie
+s:2FS	ـكِ	dein		weiblich · am Verb: dich
+s:3D	ـهُمَا	ihrer beider		Dual · am Verb: sie beide
+s:2D	ـكُمَا	euer beider		Dual · am Verb: euch beide
+pr:3MP	هُمْ	sie		Plural
 pr:2MS	أَنْتَ	du
 pr:2MP	أَنْتُمْ	ihr
 pr:1S	أَنَا	ich
 pr:1P	نَحْنُ	wir
-pr:3FS	هِيَ	sie (Sg. f.)		auch für Sachen im Plural
-pr:3FP	هُنَّ	sie (Pl. f.)
+pr:3FS	هِيَ	sie		weiblich · auch für Sachen im Plural
+pr:3FP	هُنَّ	sie		Plural weiblich
 pr:3D	هُمَا	sie beide
 pr:2D	أَنْتُمَا	ihr beide
 # Thema h3: Wo? · Fragen
-n:فَوْق	فَوْقَ	über, oberhalb
-n:تَحْت	تَحْتَ	unter, unterhalb		تَجْرِي مِنْ تَحْتِهَا ٱلْأَنْهَار – unter denen Flüsse fließen
-n:بَيْن	بَيْنَ	zwischen		بَيْنَ أَيْدِيهِمْ – vor ihnen
-n:خَلْف	خَلْفَ	hinter; nach
-n:أَمام	أَمَامَ	vor (räumlich)
+n:فَوْق	فَوْقَ	über
+n:تَحْت	تَحْتَ	unter
+n:بَيْن	بَيْنَ	zwischen
+n:خَلْف	خَلْفَ	hinter
+n:أَمام	أَمَامَ	vor
 n:وَراء	وَرَاءَ	hinter
-n:يَمِين	يَمِين	Rechte, rechte Seite; Eid		Pl. أَيْمَان
-n:شِمال	شِمَال	Linke, linke Seite
+n:يَمِين	يَمِين	Rechte		auch: Eid · Pl. أَيْمَان
+n:شِمال	شِمَال	Linke
 n:حَوْل	حَوْلَ	um … herum
-n:حَيْث	حَيْثُ	wo; wo auch immer
-n:مَن	مَنْ	wer?; wer, derjenige, der
+n:حَيْث	حَيْثُ	wo
+n:مَن	مَنْ	wer
 n:مَتَى	مَتَى	wann?
-n:أَيْن	أَيْنَ	wo?		أَيْنَمَا – wo auch immer
+n:أَيْن	أَيْنَ	wo?
 n:كَيْف	كَيْفَ	wie?
-n:كَم	كَمْ	wie viel(e)?; wie viele!
-n:أَيّ	أَيّ	welcher?; jeder (der)
-n:أَنَّى	أَنَّى	wie?, woher?
-n:أ	أَ	Fragewort (am Satzanfang)		أَلَمْ – nicht?, أَفَلَا – (etwa) nicht?
-p:هَل	هَلْ	Fragewort: ob?; etwa?
+n:كَم	كَمْ	wie viele?
+n:أَيّ	أَيّ	welcher?
+n:أَنَّى	أَنَّى	woher?		auch: wie?
+n:أ	أَ	Fragewort		vorn angehängt: أَلَمْ – nicht?
+p:هَل	هَلْ	Fragewort		eigenes Wort vor dem Satz
 n:ماذا	مَاذَا	was?
-p:لَوْلا	لَوْلَا	wenn nicht; warum nicht?
+p:لَوْلا	لَوْلَا	wenn nicht		auch: warum nicht?
 # Thema h4: Verschiedenes · Wann?
-n:ذُو	ذُو	Besitzer von, versehen mit		f. ذَاتُ · Pl. أُولُو / أُولِي
-n:أَهْل	أَهْل	Leute (von), Angehörige		أَهْلُ ٱلْكِتَاب – Leute der Schrift
-n:آل	آل	Familie, Sippe; Leute (von)		آلُ فِرْعَوْن – die Leute Pharaos
-p:أَلا	أَلَا	siehe!, wahrlich; (fragend) nicht?
-v:نِعْمَ	نِعْمَ	welch vorzüglicher …!		unveränderlich, ohne Gegenwart
-v:بِئْسَ	بِئْسَ	welch schlimmer …!		بِئْسَمَا – schlimm ist, was …
-n:مِثْل	مِثْل	gleich, wie; Gleiches
-n:مَثَل	مَثَل	Gleichnis, Beispiel		Pl. أَمْثَال
-n:قَبْل	قَبْلَ	vor (zeitlich)		مِنْ قَبْلُ – vorher
-n:بَعْد	بَعْدَ	nach (zeitlich)		مِنْ بَعْدُ – danach
-n:حِين	حِين	Zeit, Weile; zur Zeit (als)
-n:إِذ	إِذْ	als (Vergangenheit)		وَإِذْ قَالَ – und als … sagte
-p:ثُمّ	ثُمَّ	dann, darauf
-p:ف	فَـ	und (dann), so, also
-p:بَل	بَلْ	nein, vielmehr; sondern
-n:عِند	عِنْدَ	bei		عِنْدَ رَبِّهِمْ – bei ihrem Herrn
+n:ذُو	ذُو	Besitzer von		f. ذَاتُ · Pl. أُولُو
+n:أَهْل	أَهْل	Leute		أَهْلُ ٱلْكِتَاب – Leute der Schrift
+n:آل	آل	Familie
+p:أَلا	أَلَا	wahrlich
+v:نِعْمَ	نِعْمَ	wie vorzüglich!
+v:بِئْسَ	بِئْسَ	wie schlimm!
+n:مِثْل	مِثْل	wie
+n:مَثَل	مَثَل	Gleichnis		Pl. أَمْثَال
+n:قَبْل	قَبْلَ	vor		zeitlich
+n:بَعْد	بَعْدَ	nach		zeitlich
+n:حِين	حِين	Zeit
+n:إِذ	إِذْ	als		Vergangenheit
+p:ثُمّ	ثُمَّ	dann
+p:ف	فَـ	und dann
+p:بَل	بَلْ	vielmehr
+n:عِند	عِنْدَ	bei
 n:لَدَى	لَدَى	bei
-n:لَدُن	لَدُنْ	von … her, bei		مِنْ لَدُنْهُ – von Ihm her
-p:إِن	إِنْ	wenn; (mit إِلَّا) nur		إِنْ هُوَ إِلَّا – er ist nichts als
+n:لَدُن	لَدُنْ	von … her
+p:إِن	إِنْ	wenn		mit إِلَّا: nur
 # Thema h5: Präpositionen
-p:عَن	عَنْ	von (… weg), über (ein Thema)
-p:ك	كَـ	wie		كَذَٰلِكَ – so
-p:إِلَى	إِلَى	zu, nach, bis		mit Endung: إِلَيْهِ – zu ihm
-p:حَتَّى	حَتَّى	bis; sodass
-n:مَع	مَعَ	mit, zusammen mit
-p:و:schwur	وَ	bei! (Schwur)		وَٱلْعَصْرِ – bei der Zeit
-p:ت	تَـ	bei! (Schwur)		تَٱللَّهِ – bei Allah
-p:ما:x	ـمَا	angehängtes مَا		إِنَّمَا – nur, wahrlich · كُلَّمَا – jedes Mal wenn · أَيْنَمَا – wo auch immer
-p:أَمّا	أَمَّا	was … betrifft		meist mit فَـ: أَمَّا … فَـ
-p:إِمّا	إِمَّا	entweder … oder; wenn (je)
+p:عَن	عَنْ	von … weg
+p:ك	كَـ	wie
+p:إِلَى	إِلَى	zu
+p:حَتَّى	حَتَّى	bis
+n:مَع	مَعَ	mit
+p:و:schwur	وَ	bei!		Schwur
+p:ت	تَـ	bei!		Schwur
+p:ما:x	ـمَا	angehängtes مَا		إِنَّمَا · كُلَّمَا · أَيْنَمَا
+p:أَمّا	أَمَّا	was … betrifft
+p:إِمّا	إِمَّا	entweder … oder
 n:كُلَّما	كُلَّمَا	jedes Mal, wenn
 # Thema h6: Vorsilben fürs Verb · Inna
-p:قَد	قَدْ	schon, bereits (Vergangenheit); manchmal (Gegenwart)		لَقَدْ – ganz gewiss
-p:س	سَـ	wird (bald)		سَيَعْلَمُونَ – sie werden wissen
-p:سَوْف	سَوْفَ	wird (künftig)
-p:ل:betont	لَـ	wahrlich, gewiss (Betonung)		لَقَدْ، لَيَقُولُنَّ
-p:ل:soll	لِـ / لْـ	soll, möge (Aufforderung)		فَلْيَعْبُدُوا – so sollen sie dienen
-p:ل:damit	لِـ	damit, um zu		vor Gegenwartsform: لِيَعْلَمَ – damit er weiß
-p:أَم	أَمْ	oder (in Fragen); oder etwa?
+p:قَد	قَدْ	schon
+p:س	سَـ	wird		nahe Zukunft
+p:سَوْف	سَوْفَ	wird		fernere Zukunft
+p:ل:betont	لَـ	wahrlich
+p:ل:soll	لِـ / لْـ	soll
+p:ل:damit	لِـ	damit
+p:أَم	أَمْ	oder		in Fragen
 p:أَو	أَوْ	oder
-n:بَعْض	بَعْض	ein Teil, einige; einander		بَعْضُهُمْ بَعْضًا – einander
-n:كُلّ	كُلّ	jeder, alle; ganz
-p:إِنّ	إِنَّ	wahrlich, gewiss		mit Endung: إِنَّهُ، إِنَّا، إِنِّي
+n:بَعْض	بَعْض	einige
+n:كُلّ	كُلّ	jeder
+p:إِنّ	إِنَّ	wahrlich
 p:أَنّ	أَنَّ	dass
 p:كَأَنّ	كَأَنَّ	als ob
-p:لٰكِنّ	لَٰكِنَّ	aber, jedoch
-p:لٰكِن	لَٰكِنْ	aber, jedoch
-p:لَعَلّ	لَعَلَّ	vielleicht, damit (hoffentlich)		لَعَلَّكُمْ تَتَّقُونَ – damit ihr gottesfürchtig werdet
-p:أَن	أَنْ	dass, zu (vor Verb)		أَنْ يَقُولَ – dass er sagt
-v:عَسَى	عَسَى	vielleicht, es kann sein		unveränderlich, ohne Gegenwart
-n:لَمّا	لَمَّا	als (Vergangenheit)
-p:لَو	لَوْ	wenn (unwirklich), wenn doch
-p:ي	يَا	o! (Anrede)
-p:أَيُّها	أَيُّهَا	o …! (nach يَا vor Wort mit ٱلْـ)		يَٰٓأَيُّهَا ٱلنَّاسُ – o ihr Menschen
+p:لٰكِنّ	لَٰكِنَّ	aber
+p:لٰكِن	لَٰكِنْ	aber
+p:لَعَلّ	لَعَلَّ	vielleicht
+p:أَن	أَنْ	dass
+v:عَسَى	عَسَى	vielleicht
+n:لَمّا	لَمَّا	als
+p:لَو	لَوْ	wenn		unwirklich
+p:ي	يَا	o!
+p:أَيُّها	أَيُّهَا	o!		vor Wort mit ٱلْـ
 # Thema h7: Eigenschaften Allahs
 n:خَبِير	خَبِير	kundig, der alles weiß
 n:سَلام	سَلَام	Frieden; Friedensgruß

@@ -79,16 +79,19 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 18px;min-height:52vh;margin-bottom:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;user-select:none;-webkit-user-select:none}
 .card.front{cursor:pointer}
 .card{position:relative}
-.card.back{padding-top:30px}
 .cic{position:absolute;top:8px;color:var(--muted);opacity:.7}
 .cic.r{right:8px}
 .cic.l{left:8px}
 .cic.on{color:var(--accent);opacity:1}
-.word{font-size:4.2rem;line-height:2;padding-bottom:.42em;margin:0}
-.card.back .word{font-size:2.6rem}
+.word{font-size:3.3rem;line-height:2;padding-bottom:.42em;margin:0}
+.card{justify-content:flex-start}
+.wa{flex:0 0 auto;height:calc(26vh - 20px);min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:100%}
+.wa .kind{min-height:1.2em}
+.wb{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;width:100%}
+.rule{display:block;width:56px;height:1px;background:var(--line);margin:14px 0 16px}
 .kind{font-size:.78rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin:0}
 .tapnote{margin-top:18px;font-size:.85rem;color:var(--muted)}
-.mean{font-size:1.4rem;font-weight:650;margin:4px 0 6px;line-height:1.3}
+.mean{font-size:1.4rem;font-weight:650;margin:0 0 8px;line-height:1.3}
 .meta{font-size:.88rem;color:var(--muted);margin:2px 0}
 .note{font-size:.92rem;margin:6px 0 0}
 .ex{width:100%;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}

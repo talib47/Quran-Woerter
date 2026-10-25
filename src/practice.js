@@ -114,7 +114,7 @@ function renderRound(){
   if(round.flip&&round.ex){ const l=WORDS[c.ex].l; prefetchVerse(l.split(":").slice(0,2).join(":")); }
   const tag=affix?`<div class="kind">${c.k}</div>`:isNew?`<div class="kind" style="color:var(--accent)">neu</div>`:"";
   if(!round.flip){
-    $("#app").innerHTML=`${head}<div class="card front${round.enter?" enter":""}" id="card"><i class="tint" aria-hidden="true"></i><p class="ar word">${esc(c.ar)}</p>${tag}</div>
+    $("#app").innerHTML=`${head}<div class="card front${round.enter?" enter":""}" id="card"><i class="tint" aria-hidden="true"></i><div class="wa"><p class="ar word">${esc(c.ar)}</p>${tag}</div><div class="wb"></div></div>
       <div class="acts">${isNew?`<button class="btn ghost" id="known">Kenne ich</button>`:""}<button class="btn" id="flip">Aufdecken</button></div>`;
     $("#flip").onclick=flipCard;
     const k=$("#known"); if(k) k.onclick=()=>grade(4);
@@ -124,14 +124,15 @@ function renderRound(){
     $("#app").innerHTML=`${head}<div class="card back${round.enter?" enter":""}" id="card"><i class="tint" aria-hidden="true"></i>
       <button class="icon cic r" id="pW" aria-label="Wort anhören">${SND_SVG}</button>
       <button class="icon cic l${round.ex?" on":""}" id="exT" aria-label="Vers zeigen">${VERSE_SVG}</button>
-      <p class="ar word">${esc(c.ar)}</p>${affix?`<div class="kind">${c.k}</div>`:""}
+      <div class="wa"><p class="ar word">${esc(c.ar)}</p>${tag}</div>
+      <div class="wb"><span class="rule" aria-hidden="true"></span>
       <div class="mean">${mix(c.de)}</div>
-      ${meta?`<div class="meta">${meta}</div>`:""}
       ${c.no?`<div class="meta">${mix(c.no)}</div>`:""}
+      ${meta?`<div class="meta">${meta}</div>`:""}
       ${round.ex?`<div class="ex"><p class="ar vtext">${verseHTML(vk,c.ex)}</p>
         <div class="ref">${vk} · ${esc(w.g)} <button class="link" id="pV">▶ Vers</button></div>
         ${v.tr?`<p class="tr">${esc(v.tr)}</p>`:""}</div>`:""}
-      </div>
+      </div></div>
       <div class="acts"><button class="btn no" id="g1">Nicht gewusst</button><button class="btn" id="g3">Gewusst</button></div>`;
     $("#pW").onclick=e=>{ e.stopPropagation(); playWord(w.l); };
     const pv=$("#pV"); if(pv) pv.onclick=()=>playVerse(vk);
