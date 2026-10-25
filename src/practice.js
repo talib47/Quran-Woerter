@@ -148,7 +148,7 @@ function renderRound(){
 function bindSwipe(el){
   const tint=el.querySelector(".tint"); let x0=null, y0=0, dx=0, moved=false, raf=0, w=360, dir=0;
   const paint=()=>{ raf=0; el.style.transform=`translate3d(${dx}px,0,0) rotate(${dx/45}deg)`;
-    if(round.flip){ const d=dx>0?1:-1; if(d!==dir){ dir=d; tint.className="tint "+(d>0?"ok":"no"); } tint.style.opacity=Math.min(1,Math.abs(dx)/(w*.35)); } };
+    const d=dx>0?1:-1; if(d!==dir){ dir=d; tint.className="tint "+(d>0?"ok":"no"); } tint.style.opacity=Math.min(1,Math.abs(dx)/Math.min(90,w*.22)); };
   el.addEventListener("touchstart",e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; dx=0; moved=false; w=el.offsetWidth||360; },{passive:true});
   el.addEventListener("touchmove",e=>{ if(x0===null) return; const d=e.touches[0].clientX-x0, dy=e.touches[0].clientY-y0;
     if(!moved){ if(Math.abs(d)>6&&Math.abs(d)>Math.abs(dy)){ moved=true; x0+=d>0?6:-6; el.style.transition="none"; tint.style.transition="none"; } else return; }
