@@ -101,22 +101,6 @@ function renderHome(){
 function verseHTML(vk,hiWord){
   return DATA.verses[vk].w.map(wi=>`<span${wi===hiWord?' class="hl"':""}>${esc(WORDS[wi].t)}</span>`).join(" ");
 }
-/* Bedeutung für die Karte aufteilen: vorne nur die Übersetzung, Grammatik (f., Pl., Dual …) klein darunter,
-   alles andere aus den Klammern kommt in „Mehr“. */
-const GRAM_RE=/^(m\.|f\.|Pl\.|Sg\.|Dual|Sg\. f\.|Pl\. f\.)$/;
-function splitDe(de){
-  const gram=[], extra=[];
-  let main=de.replace(/(^|\s)\(([^()]*)\)/g,(m,pre,inner)=>{
-    const parts=inner.split(",").map(x=>x.trim());
-    const g=parts.filter(x=>GRAM_RE.test(x)), o=parts.filter(x=>!GRAM_RE.test(x));
-    if(g.length) gram.push(g.join(" "));
-    if(o.length) extra.push(o.join(", "));
-    return pre;
-  });
-  main=main.replace(/\s+([,;:!?])/g,"$1").replace(/([,;])\s*(?=[,;]|$)/g,"").replace(/\s{2,}/g," ").replace(/^[\s,;:]+|[\s,;:]+$/g,"").trim();
-  return {main:main||de, gram:gram.join(" "), extra:extra.join("; ")};
-}
-const INFO_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.1"/></svg>`;
 const SND_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>`;
 const VERSE_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 11h16M4 16h10"/></svg>`;
 function renderRound(){
@@ -137,18 +121,14 @@ function renderRound(){
   } else {
     const w=WORDS[c.ex], vk=w.l.split(":").slice(0,2).join(":"), v=DATA.verses[vk];
     const meta=[c.r?`Wurzel <span class="ai">${esc(c.r)}</span>`:"", c.pr?`Gegenwart <span class="ai">${esc(c.pr)}</span>`:"", c.st?`Stamm ${c.st}`:""].filter(Boolean).join(" · ");
-    const d=splitDe(c.de);
     $("#app").innerHTML=`${head}<div class="card back${round.enter?" enter":""}" id="card"><i class="tint" aria-hidden="true"></i>
       <button class="icon cic r" id="pW" aria-label="Wort anhören">${SND_SVG}</button>
-      <button class="icon cic l${round.ex?" on":""}" id="exT" aria-label="Mehr zum Wort">${INFO_SVG}</button>
+      <button class="icon cic l${round.ex?" on":""}" id="exT" aria-label="Vers zeigen">${VERSE_SVG}</button>
       <p class="ar word">${esc(c.ar)}</p>${affix?`<div class="kind">${c.k}</div>`:""}
-      <div class="mean">${mix(d.main)}</div>
-      ${d.gram?`<div class="gram">${esc(d.gram)}</div>`:""}
-      ${round.ex?`<div class="ex">
-        ${d.extra?`<div class="xl">${mix(d.extra)}</div>`:""}
-        ${c.no?`<div class="xl">${mix(c.no)}</div>`:""}
-        ${meta?`<div class="xl meta">${meta}</div>`:""}
-        <p class="ar vtext">${verseHTML(vk,c.ex)}</p>
+      <div class="mean">${mix(c.de)}</div>
+      ${meta?`<div class="meta">${meta}</div>`:""}
+      ${c.no?`<div class="meta">${mix(c.no)}</div>`:""}
+      ${round.ex?`<div class="ex"><p class="ar vtext">${verseHTML(vk,c.ex)}</p>
         <div class="ref">${vk} · ${esc(w.g)} <button class="link" id="pV">▶ Vers</button></div>
         ${v.tr?`<p class="tr">${esc(v.tr)}</p>`:""}</div>`:""}
       </div>
