@@ -100,9 +100,15 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .acts{position:fixed;left:0;right:0;bottom:0;z-index:4;display:flex;gap:10px;justify-content:center;padding:10px max(16px,env(safe-area-inset-left,0px)) calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 30%)}
 .acts .btn{flex:1;max-width:19rem;min-height:56px;font-size:1.05rem}
 .acts .btn.no{background:var(--surface);color:var(--bad);border:1px solid var(--line)}
-.card{transition:transform .2s}
-.card[data-sw="r"]{box-shadow:0 0 0 3px var(--good)}
-.card[data-sw="l"]{box-shadow:0 0 0 3px var(--bad)}
+.card{touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;will-change:transform;backface-visibility:hidden}
+.card .tint{position:absolute;inset:0;opacity:0;pointer-events:none;border-radius:inherit;border:3px solid transparent;will-change:opacity}
+.card .tint.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 7%,transparent)}
+.card .tint.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 7%,transparent)}
+.card.enter{animation:cardIn .22s ease-out}
+@keyframes cardIn{from{opacity:0;transform:translate3d(0,8px,0) scale(.985)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.card.enter{animation:none}}
+.prog .undo{color:var(--muted)}
+#app{overflow-x:clip}
 /* Suren */
 .slist{list-style:none;margin:0;padding:0}
 .slist li{margin-bottom:10px}
@@ -436,7 +442,7 @@ function buildRound(){
   if(!due.length&&!fresh.length) return null;
   const q=due.map(c=>c.id), step=fresh.length?Math.max(1,Math.floor(q.length/fresh.length)):1;
   fresh.forEach((c,i)=>q.splice(Math.min(q.length,i*(step+1)+1),0,c.id));
-  return {q, i:0, flip:false, done:0, fresh:fresh.length, again:{}};
+  return {q, i:0, flip:false, done:0, fresh:fresh.length, again:{}, hist:[]};
 }
 function startRound(){
   round=buildRound();
@@ -450,16 +456,25 @@ function flipCard(){
 /* Zwei Bewertungen: gewusst (FSRS „Gut“) oder nicht gewusst („Nochmal“). Neue Karte „Kenne ich“ = „Einfach“, ohne Aufdecken. */
 function grade(g){
   if(!round) return;
-  const id=round.q[round.i], today=dayIdx();
+  const id=round.q[round.i], today=dayIdx(), dk=dayKey();
+  (round.hist=round.hist||[]).push({i:round.i, id, card:state.cards[id]?JSON.parse(JSON.stringify(state.cards[id])):undefined, dk, day:state.days[dk], qlen:round.q.length, q:round.q.slice(), again:Object.assign({},round.again), done:round.done});
   state.cards[id]=schedule(state.cards[id],g,today,true);
-  const dk=dayKey(); state.days[dk]=(state.days[dk]||0)+1;
+  state.days[dk]=(state.days[dk]||0)+1;
   save();
   if(g===1){ round.again[id]=(round.again[id]||0)+1; round.q.splice(Math.min(round.q.length,round.i+4),0,id); }
-  round.done++; round.i++; round.flip=false; round.ex=false;
+  round.done++; round.i++; round.flip=false; round.ex=false; round.enter=true;
   if(round.i>=round.q.length){ view="done"; render(); }
   else { renderRound(); window.scrollTo(0,0); }
 }
 
+/* Eine Karte zurück: letzte Bewertung rückgängig machen, die Karte erscheint aufgedeckt zum Neubewerten */
+function undoCard(){
+  const h=round&&round.hist&&round.hist.pop(); if(!h) return;
+  if(h.card===undefined) delete state.cards[h.id]; else state.cards[h.id]=h.card;
+  if(h.day===undefined) delete state.days[h.dk]; else state.days[h.dk]=h.day;
+  round.q=h.q; round.again=h.again; round.done=h.done; round.i=h.i; round.flip=true; round.ex=false; round.enter=true;
+  save(); renderRound(); window.scrollTo(0,0);
+}
 /* ================= Ansichten ================= */
 function renderHome(){
   const due=dueCards().length, fresh=freshCards().length, today=state.days[dayKey()]||0;
@@ -477,7 +492,7 @@ function renderHome(){
     <p class="line">Gelernt: <b>${knownCount()}</b> von ${CARDS.length} Karten</p>
     <p class="line">Koran: Du kennst <b>${pct(quranCoverage())}</b> aller Wörter</p>
     ${syncBox()}
-    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 23.10. 17:59</p>`;
+    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 26.10. 01:15</p>`;
   const g=$("#go"); if(g) g.onclick=startRound;
   bindSync();
 }
@@ -490,20 +505,21 @@ function renderRound(){
   const id=round.q[round.i], c=CARDS[CARD_IX[id]], s=cst(id);
   const total=round.q.length, isNew=!s;
   const head=`<div class="prog"><div class="bar"><i style="width:${Math.round(round.i/total*100)}%"></i></div><span class="n">${round.i+1} / ${total}</span>
+    ${(round.hist||[]).length?`<button class="icon undo" id="undoR" aria-label="Eine Karte zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg></button>`:""}
     <button class="icon" id="endR" aria-label="Runde beenden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>`;
   const affix=c.k==="Vorsilbe"||c.k==="Endung";
   for(let k=round.i;k<Math.min(round.q.length,round.i+3);k++) prefetchWord(WORDS[CARDS[CARD_IX[round.q[k]]].ex].l);
   if(round.flip&&round.ex){ const l=WORDS[c.ex].l; prefetchVerse(l.split(":").slice(0,2).join(":")); }
   const tag=affix?`<div class="kind">${c.k}</div>`:isNew?`<div class="kind" style="color:var(--accent)">neu</div>`:"";
   if(!round.flip){
-    $("#app").innerHTML=`${head}<div class="card front" id="card"><p class="ar word">${esc(c.ar)}</p>${tag}</div>
+    $("#app").innerHTML=`${head}<div class="card front${round.enter?" enter":""}" id="card"><i class="tint" aria-hidden="true"></i><p class="ar word">${esc(c.ar)}</p>${tag}</div>
       <div class="acts">${isNew?`<button class="btn ghost" id="known">Kenne ich</button>`:""}<button class="btn" id="flip">Aufdecken</button></div>`;
     $("#flip").onclick=flipCard;
     const k=$("#known"); if(k) k.onclick=()=>grade(4);
   } else {
     const w=WORDS[c.ex], vk=w.l.split(":").slice(0,2).join(":"), v=DATA.verses[vk];
     const meta=[c.r?`Wurzel <span class="ai">${esc(c.r)}</span>`:"", c.pr?`Gegenwart <span class="ai">${esc(c.pr)}</span>`:"", c.st?`Stamm ${c.st}`:""].filter(Boolean).join(" · ");
-    $("#app").innerHTML=`${head}<div class="card back" id="card">
+    $("#app").innerHTML=`${head}<div class="card back${round.enter?" enter":""}" id="card"><i class="tint" aria-hidden="true"></i>
       <button class="icon cic r" id="pW" aria-label="Wort anhören">${SND_SVG}</button>
       <button class="icon cic l${round.ex?" on":""}" id="exT" aria-label="Vers zeigen">${VERSE_SVG}</button>
       <p class="ar word">${esc(c.ar)}</p>${affix?`<div class="kind">${c.k}</div>`:""}
@@ -520,19 +536,29 @@ function renderRound(){
     $("#exT").onclick=e=>{ e.stopPropagation(); round.ex=!round.ex; renderRound(); };
     $("#g1").onclick=()=>grade(1); $("#g3").onclick=()=>grade(3);
   }
+  round.enter=false;
   bindSwipe($("#card"));
+  const u=$("#undoR"); if(u) u.onclick=undoCard;
   $("#endR").onclick=()=>{ round=null; AUD.pause(); go("home"); };
 }
-/* Wischen: vorne in jede Richtung = aufdecken, hinten rechts = gewusst, links = nicht gewusst. Tippen dreht die Karte hin und her. */
+/* Wischen: vorne in jede Richtung = aufdecken, hinten rechts = gewusst, links = nicht gewusst. Tippen dreht die Karte hin und her.
+   Pro Bild nur transform und opacity ändern (läuft auf dem Grafikchip), der farbige Rand blendet mit der Wischstrecke ein. */
 function bindSwipe(el){
-  let x0=null, y0=0, dx=0;
-  el.addEventListener("touchstart",e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; dx=0; el.style.transition="none"; },{passive:true});
-  el.addEventListener("touchmove",e=>{ if(x0===null) return; dx=e.touches[0].clientX-x0; const dy=e.touches[0].clientY-y0;
-    if(Math.abs(dx)>Math.abs(dy)){ el.style.transform=`translateX(${dx*0.6}px) rotate(${dx/40}deg)`; el.dataset.sw=dx>40?"r":dx<-40?"l":""; } },{passive:true});
-  el.addEventListener("touchend",()=>{ if(x0===null) return; x0=null; el.style.transition=""; el.style.transform=""; delete el.dataset.sw;
-    if(Math.abs(dx)<70) return;
-    if(!round.flip) flipCard(); else grade(dx>0?3:1); });
-  el.addEventListener("click",e=>{ if(Math.abs(dx)>=10||e.target.closest("button")) return; round.flip=!round.flip; renderRound(); });
+  const tint=el.querySelector(".tint"); let x0=null, y0=0, dx=0, moved=false, raf=0, w=360, dir=0;
+  const paint=()=>{ raf=0; el.style.transform=`translate3d(${dx}px,0,0) rotate(${dx/45}deg)`;
+    if(round.flip){ const d=dx>0?1:-1; if(d!==dir){ dir=d; tint.className="tint "+(d>0?"ok":"no"); } tint.style.opacity=Math.min(1,Math.abs(dx)/(w*.35)); } };
+  el.addEventListener("touchstart",e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; dx=0; moved=false; w=el.offsetWidth||360; },{passive:true});
+  el.addEventListener("touchmove",e=>{ if(x0===null) return; const d=e.touches[0].clientX-x0, dy=e.touches[0].clientY-y0;
+    if(!moved){ if(Math.abs(d)>6&&Math.abs(d)>Math.abs(dy)){ moved=true; x0+=d>0?6:-6; el.style.transition="none"; tint.style.transition="none"; } else return; }
+    e.preventDefault(); dx=e.touches[0].clientX-x0; if(!raf) raf=requestAnimationFrame(paint); },{passive:false});
+  el.addEventListener("touchend",()=>{ if(x0===null) return; x0=null; if(!moved) return; if(raf){ cancelAnimationFrame(raf); raf=0; }
+    const lim=Math.min(90,w*.22);
+    if(Math.abs(dx)>lim&&round.flip){ const out=(dx>0?1:-1)*(window.innerWidth+100), g=dx>0?3:1;
+      el.style.transition="transform .3s cubic-bezier(.2,.7,.3,1), opacity .3s ease-out"; el.style.transform=`translate3d(${out}px,0,0) rotate(${dx>0?12:-12}deg)`; el.style.opacity="0";
+      setTimeout(()=>grade(g),220); return; }
+    el.style.transition="transform .35s cubic-bezier(.3,1.4,.5,1)"; tint.style.transition="opacity .25s"; el.style.transform=""; tint.style.opacity="0";
+    if(Math.abs(dx)>lim&&!round.flip) setTimeout(flipCard,120); });
+  el.addEventListener("click",e=>{ if(moved||e.target.closest("button")) return; round.flip=!round.flip; renderRound(); });
 }
 function renderDone(){
   const r=round||{done:0,fresh:0}, more=buildRound();
@@ -657,7 +683,7 @@ if(ghToken) syncFromRemote().then(changed=>{ if(view!=="round") render(); });
    GitHub Pages liefert die Seite bis zu 10 Minuten aus dem Zwischenspeicher, und die Home-Bildschirm-App
    hält sie noch länger. Deshalb fragt die App beim Öffnen und beim Zurückkehren die aktuelle Fassung ab
    (am Zwischenspeicher vorbei) und lädt sich neu, wenn es eine neuere gibt. */
-const BUILD="20261023175910";
+const BUILD="20261026011510";
 async function checkUpdate(){
   if(view==="round") return;
   try{

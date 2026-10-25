@@ -100,9 +100,15 @@ h1{font-size:1.5rem;margin:4px 0 14px;font-weight:700;letter-spacing:-.01em}
 .acts{position:fixed;left:0;right:0;bottom:0;z-index:4;display:flex;gap:10px;justify-content:center;padding:10px max(16px,env(safe-area-inset-left,0px)) calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 30%)}
 .acts .btn{flex:1;max-width:19rem;min-height:56px;font-size:1.05rem}
 .acts .btn.no{background:var(--surface);color:var(--bad);border:1px solid var(--line)}
-.card{transition:transform .2s}
-.card[data-sw="r"]{box-shadow:0 0 0 3px var(--good)}
-.card[data-sw="l"]{box-shadow:0 0 0 3px var(--bad)}
+.card{touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;will-change:transform;backface-visibility:hidden}
+.card .tint{position:absolute;inset:0;opacity:0;pointer-events:none;border-radius:inherit;border:3px solid transparent;will-change:opacity}
+.card .tint.ok{border-color:var(--good);background:color-mix(in srgb,var(--good) 7%,transparent)}
+.card .tint.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 7%,transparent)}
+.card.enter{animation:cardIn .22s ease-out}
+@keyframes cardIn{from{opacity:0;transform:translate3d(0,8px,0) scale(.985)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.card.enter{animation:none}}
+.prog .undo{color:var(--muted)}
+#app{overflow-x:clip}
 /* Suren */
 .slist{list-style:none;margin:0;padding:0}
 .slist li{margin-bottom:10px}
