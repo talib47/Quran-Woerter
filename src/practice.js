@@ -144,19 +144,19 @@ function renderRound(){
   const u=$("#undoR"); if(u) u.onclick=undoCard;
   $("#endR").onclick=()=>{ round=null; AUD.pause(); go("home"); };
 }
-/* Wischen: vorne in jede Richtung = aufdecken, hinten rechts = gewusst, links = nicht gewusst. Tippen dreht die Karte hin und her.
+/* Wischen: vorne rechts = gewusst (ohne Aufdecken), vorne links = aufdecken, hinten rechts = gewusst, links = nicht gewusst. Tippen dreht die Karte hin und her.
    Pro Bild nur transform und opacity ändern (läuft auf dem Grafikchip), der farbige Rand blendet mit der Wischstrecke ein. */
 function bindSwipe(el){
   const tint=el.querySelector(".tint"); let x0=null, y0=0, dx=0, moved=false, raf=0, w=360, dir=0;
   const paint=()=>{ raf=0; el.style.transform=`translate3d(${dx}px,0,0) rotate(${dx/45}deg)`;
-    const d=dx>0?1:-1; if(d!==dir){ dir=d; tint.className="tint "+(d>0?"ok":"no"); } tint.style.opacity=Math.min(1,Math.abs(dx)/Math.min(90,w*.22)); };
+    const d=dx>0?1:-1; if(d!==dir){ dir=d; tint.className="tint "+(d>0?"ok":round.flip?"no":""); } tint.style.opacity=Math.min(1,Math.abs(dx)/Math.min(90,w*.22)); };
   el.addEventListener("touchstart",e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; dx=0; moved=false; w=el.offsetWidth||360; },{passive:true});
   el.addEventListener("touchmove",e=>{ if(x0===null) return; const d=e.touches[0].clientX-x0, dy=e.touches[0].clientY-y0;
     if(!moved){ if(Math.abs(d)>6&&Math.abs(d)>Math.abs(dy)){ moved=true; x0+=d>0?6:-6; el.style.transition="none"; tint.style.transition="none"; } else return; }
     e.preventDefault(); dx=e.touches[0].clientX-x0; if(!raf) raf=requestAnimationFrame(paint); },{passive:false});
   el.addEventListener("touchend",()=>{ if(x0===null) return; x0=null; if(!moved) return; if(raf){ cancelAnimationFrame(raf); raf=0; }
     const lim=Math.min(90,w*.22);
-    if(Math.abs(dx)>lim&&round.flip){ const out=(dx>0?1:-1)*(window.innerWidth+100), g=dx>0?3:1;
+    if(Math.abs(dx)>lim&&(round.flip||dx>0)){ const out=(dx>0?1:-1)*(window.innerWidth+100), g=dx>0?3:1;
       el.style.transition="transform .3s cubic-bezier(.2,.7,.3,1), opacity .3s ease-out"; el.style.transform=`translate3d(${out}px,0,0) rotate(${dx>0?12:-12}deg)`; el.style.opacity="0";
       setTimeout(()=>grade(g),220); return; }
     el.style.transition="transform .35s cubic-bezier(.3,1.4,.5,1)"; tint.style.transition="opacity .25s"; el.style.transform=""; tint.style.opacity="0";
