@@ -133,6 +133,16 @@ function verseHTML(vk,hiWord){
 }
 const SND_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>`;
 const VERSE_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 11h16M4 16h10"/></svg>`;
+/* Hinweis: Absätze mit „ ¶ “ getrennt; Zeilen mit „ | “ werden zur Tabelle (Bedeutung | wann | Beispiel). */
+function infoHTML(t){
+  const parts=t.split(" ¶ "); let h="", rows="";
+  const flush=()=>{ if(rows){ h+=`<div class="itab">${rows}</div>`; rows=""; } };
+  for(const p of parts){
+    if(p.includes(" | ")){ const [a,b,c]=p.split(" | "); rows+=`<div class="ir"><b>${esc(a)}</b><span>${mix(b)}</span><span class="ai ix" dir="rtl">${esc(c||"")}</span></div>`; }
+    else { flush(); h+=`<p>${mix(p)}</p>`; }
+  }
+  flush(); return h;
+}
 function renderRound(){
   const id=round.q[round.i], c=CARDS[CARD_IX[id]], s=cst(id);
   const total=round.q.length, isNew=!s;
@@ -157,7 +167,7 @@ function renderRound(){
       <div class="wa"><p class="ar word">${esc(c.ar)}</p>${c.vh?`<p class="ar vh">${esc(c.vh)}</p>`:""}${tag}</div>
       <div class="wb"><span class="rule" aria-hidden="true"></span>
       <div class="mean">${mix(c.de)}${c.in?`<button class="inf${round.info?" on":""}" id="infT" aria-label="Hinweis">i</button>`:""}</div>
-      ${c.in&&round.info?`<div class="infobox">${mix(c.in)}</div>`:""}
+      ${c.in&&round.info?`<div class="infobox">${infoHTML(c.in)}</div>`:""}
       ${c.no?`<div class="meta">${mix(c.no)}</div>`:""}
       ${meta?`<div class="meta">${meta}</div>`:""}
       ${round.ex?`<div class="ex"><p class="ar vtext">${verseHTML(vk,c.ex)}</p>

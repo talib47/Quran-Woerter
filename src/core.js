@@ -21,7 +21,7 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const AR_RE=/[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿][؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿ \/]*[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿]|[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿]/g;
 /* Text mit eingestreutem Arabisch: arabische Stellen in der Koran-Schrift */
-const mix=s=>esc(s).replace(AR_RE,m=>`<span class="ai" dir="rtl">${m}</span>`);
+const mix=s=>esc(s).replace(AR_RE,m=>`<span class="ai" dir="rtl">${m}</span>&lrm;`);
 const p3=n=>String(n).padStart(3,"0");
 const arNum=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
 const pct=x=>(Math.round(x*1000)/10).toLocaleString("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1})+" %";
