@@ -7,7 +7,7 @@ p:ال	ٱلْـ	der, die, das
 n:رَحْمٰن	رَحْمٰن	der Allerbarmer
 n:رَحِيم	رَحِيم	barmherzig
 n:حَمْد	حَمْد	Lob
-p:ل	لِـ	für			لِلَّهِ	لِـ vor einem Nomen: „für“, „gehört“: لِلَّهِ – für Allah. Vor einem Verb in der Gegenwart heißt es dagegen „damit“.
+p:ل	لِـ	für			لِلَّهِ	Vor einem Nomen bedeutet لِـ „für“ oder „gehört“. Vor einem Verb bedeutet es dagegen „damit“.
 n:رَبّ	رَبّ	Herr
 n:عالَم	عَالَم	Welt		Pl. عَالَمُون / عَالَمِين – die Welten, alle Geschöpfe
 n:مالِك	مَالِك	Herrscher
@@ -15,7 +15,7 @@ n:يَوْم	يَوْم	Tag		Pl. أَيَّام
 n:دِين	دِين	Religion		auch: Gericht · يَوْمُ ٱلدِّين – Tag des Gerichts
 pr:إِيّا	إِيَّا	allein		إِيَّاكَ – dich allein
 v:عَبَدَ	عَبَدَ	dienen	يَعْبُدُ	Maṣdar عِبَادَة
-p:و	وَ	und			وَقَالَ	وَ verbindet Wörter und Sätze: „und“. Steht es am Surenanfang vor einem Nomen mit Kasra, ist es ein Schwur: وَٱلْعَصْرِ – bei der Zeit.
+p:و	وَ	und			وَقَالَ	Meistens bedeutet وَ einfach „und“. Steht es am Anfang einer Sure vor einem Nomen mit Kasra, leitet es einen Schwur ein.
 v:اسْتَعِينُ	اِسْتَعَانَ	um Hilfe bitten	يَسْتَعِينُ	Stamm X zur Wurzel ع و ن (Hilfe)
 v:هَدَى	هَدَى	rechtleiten	يَهْدِي	Imperativ: اِهْدِ – leite!
 s:1P	ـنَا	unser		am Verb: uns
@@ -27,7 +27,7 @@ p:عَلَى	عَلَى	auf
 s:3MP	ـهُمْ	ihr		Plural · am Verb: sie
 n:غَيْر	غَيْر	anders als
 n:مَغْضُوب	مَغْضُوب	dem gezürnt wird		passives Partizip zu غَضِبَ – zürnen
-p:لا	لَا	nicht				لَا verneint die Gegenwart und Nomen: لَا رَيْبَ – kein Zweifel. Vergangenheit: لَمْ oder مَا, Zukunft: لَنْ. Nicht verwechseln mit لَـ (Fatha, ohne Alif, am Wort angehängt) – „wahrlich“.
+p:لا	لَا	nicht				لَا verneint die Gegenwart. Für die Vergangenheit steht لَمْ oder مَا, für die Zukunft لَنْ. Nicht zu verwechseln mit لَـ ohne Alif, das bekräftigt.
 n:ضالّ	ضَالّ	irregehend		aktives Partizip zu ضَلَّ – irregehen
 v:قالَ	قَالَ	sagen	يَقُولُ	Imperativ: قُلْ – sag!
 v:عُذْ	عَاذَ	Zuflucht suchen	يَعُوذُ	mit بِـ – bei
@@ -43,7 +43,7 @@ p:فِي	فِي	in
 n:صَدْر	صَدْر	Brust		Pl. صُدُور
 n:جِنَّة	جِنَّة	Dschinn
 n:فَلَق	فَلَق	Tagesanbruch
-n:ما	مَا	was			مَا تَعْبُدُونَ	Hier ist مَا Frage- oder Relativwort: „was“, „das, was“. Vor einem Verb in der Vergangenheit verneint مَا dagegen meist: „nicht“.
+n:ما	مَا	was			مَا تَعْبُدُونَ	مَا hat zwei Bedeutungen. Hier bedeutet es „was“ oder „das, was“. Vor einem Verb in der Vergangenheit ist es dagegen meist eine Verneinung.
 v:خَلَقَ	خَلَقَ	erschaffen	يَخْلُقُ	Maṣdar خَلْق
 n:غاسِق	غَاسِق	finstere Nacht		aktives Partizip zu غَسَقَ – finster werden
 n:إِذا	إِذَا	wenn
@@ -55,7 +55,7 @@ v:حَسَدَ	حَسَدَ	beneiden	يَحْسُدُ
 pr:3MS	هُوَ	er
 n:أَحَد	أَحَد	einer		verneint: niemand
 n:صَمَد	صَمَد	der Unabhängige
-p:لَم	لَمْ	nicht		verneint die Vergangenheit		لَمْ + Gegenwartsform verneint die Vergangenheit: لَمْ يَلِدْ – er hat nicht gezeugt. لَا verneint die Gegenwart, لَنْ die Zukunft.
+p:لَم	لَمْ	nicht		verneint die Vergangenheit		لَمْ verneint die Vergangenheit, obwohl danach die Gegenwartsform des Verbs folgt. Die Gegenwart verneint لَا, die Zukunft لَنْ.
 v:وَلَدَ	وَلَدَ	zeugen	يَلِدُ	Passiv: يُولَدُ – gezeugt werden
 v:كانَ	كَانَ	sein	يَكُونُ
 s:3MS	ـهُ	sein		am Verb: ihn
@@ -71,8 +71,8 @@ n:الَّذِي:f	ٱلَّتِي	welche		weiblich · auch für Sachen im Plural
 n:الَّذِي:pl	ٱلَّذِينَ	diejenigen, die
 p:إِلّا	إِلَّا	außer		nach Verneinung: nur
 p:كَلّا	كَلَّا	keineswegs!
-p:لَن	لَنْ	wird nicht		verneint die Zukunft		لَنْ + Gegenwartsform verneint die Zukunft: لَنْ تَرَانِي – du wirst mich nicht sehen. لَمْ verneint die Vergangenheit, لَا die Gegenwart.
-p:ما	مَا	nicht		meist Vergangenheit	مَا أَغْنَىٰ	Vor einem Verb verneint مَا, meist in der Vergangenheit: مَا أَغْنَىٰ – es nützte nicht. Als Frage- oder Relativwort heißt مَا dagegen „was“.
+p:لَن	لَنْ	wird nicht		verneint die Zukunft		لَنْ verneint die Zukunft. Danach folgt die Gegenwartsform des Verbs. Die Gegenwart verneint لَا, die Vergangenheit لَمْ.
+p:ما	مَا	nicht		meist Vergangenheit	مَا أَغْنَىٰ	مَا hat zwei Bedeutungen. Als Verneinung steht es meist vor einem Verb in der Vergangenheit. Sonst bedeutet es „was“ oder „das, was“.
 v:لَيْسَ	لَيْسَ	ist nicht		f. لَيْسَتْ
 p:بَلَى	بَلَى	doch!		Antwort auf verneinte Frage
 n:دُون	دُونَ	statt		مِنْ دُونِ ٱللَّه – statt Allah
@@ -130,8 +130,8 @@ n:قَبْل	قَبْلَ	vor		zeitlich
 n:بَعْد	بَعْدَ	nach		zeitlich
 n:حِين	حِين	Zeit
 n:إِذ	إِذْ	als		Vergangenheit
-p:ثُمّ	ثُمَّ	dann				ثُمَّ: dann – mit zeitlichem Abstand. فَـ heißt „und dann“ – sofort oder als Folge.
-p:ف	فَـ	und dann				فَـ: und dann – sofort oder als Folge. ثُمَّ heißt „dann“ mit zeitlichem Abstand.
+p:ثُمّ	ثُمَّ	dann				ثُمَّ bedeutet „dann“, mit zeitlichem Abstand. فَـ schließt dagegen direkt an: sofort danach oder als Folge davon.
+p:ف	فَـ	und dann				فَـ schließt direkt an: sofort danach oder als Folge davon. ثُمَّ bedeutet auch „dann“, aber mit zeitlichem Abstand.
 p:بَل	بَلْ	vielmehr
 n:عِند	عِنْدَ	bei
 n:لَدَى	لَدَى	bei
@@ -143,7 +143,7 @@ p:ك	كَـ	wie
 p:إِلَى	إِلَى	zu
 p:حَتَّى	حَتَّى	bis
 n:مَع	مَعَ	mit
-p:و:schwur	وَ	bei!		Schwur	وَٱلْعَصْرِ	Schwur-وَ: danach steht das Nomen im Genitiv (Kasra), oft am Surenanfang. Sonst heißt وَ einfach „und“.
+p:و:schwur	وَ	bei!		Schwur	وَٱلْعَصْرِ	Am Anfang mancher Suren leitet وَ einen Schwur ein. Das folgende Nomen endet dann auf Kasra. Sonst bedeutet وَ einfach „und“.
 p:ت	تَـ	bei!		Schwur
 p:ما:x	ـمَا	angehängtes مَا		إِنَّمَا · كُلَّمَا · أَيْنَمَا
 p:أَمّا	أَمَّا	was … betrifft
@@ -151,22 +151,22 @@ p:إِمّا	إِمَّا	entweder … oder
 n:كُلَّما	كُلَّمَا	jedes Mal, wenn
 # Thema h6: Vorsilben fürs Verb · Inna
 p:قَد	قَدْ	schon
-p:س	سَـ	wird		nahe Zukunft		سَـ hängt direkt am Verb und meint die nahe Zukunft: سَيَعْلَمُونَ – sie werden wissen. سَوْفَ steht frei davor, eher für die fernere Zukunft.
-p:سَوْف	سَوْفَ	wird		fernere Zukunft		سَوْفَ steht frei vor dem Verb, eher für die fernere Zukunft: سَوْفَ تَعْلَمُونَ – ihr werdet wissen. سَـ hängt dagegen direkt am Verb.
-p:ل:betont	لَـ	wahrlich				لَـ mit Fatha hängt direkt am Wort und bekräftigt: „wahrlich“: لَقَدْ، لَيَقُولُنَّ. Nicht verwechseln mit لَا (eigenes Wort mit Alif) – „nicht“ – und لِـ mit Kasra – „für“.
-p:ل:soll	لِـ / لْـ	soll				لِـ / لْـ vor einem Verb ohne Endvokal: „soll“: فَلْيَعْبُدُوا – so sollen sie dienen. لَـ mit Fatha bekräftigt dagegen: „wahrlich“.
-p:ل:damit	لِـ	damit			لِيَعْلَمَ	لِـ vor einem Verb in der Gegenwart: „damit“, „um zu“: لِيَعْلَمَ – damit er weiß. Vor einem Nomen heißt es „für“.
+p:س	سَـ	wird		nahe Zukunft		سَـ hängt direkt am Verb und kündigt die nahe Zukunft an. سَوْفَ steht als eigenes Wort davor und blickt eher weiter voraus.
+p:سَوْف	سَوْفَ	wird		fernere Zukunft		سَوْفَ steht als eigenes Wort vor dem Verb und blickt eher weiter voraus. سَـ hängt dagegen direkt am Verb und meint die nahe Zukunft.
+p:ل:betont	لَـ	wahrlich				Mit Fatha bekräftigt لَـ das Wort, an dem es hängt. Nicht zu verwechseln mit لَا: Das ist ein eigenes Wort mit Alif und bedeutet „nicht“. لِـ mit Kasra bedeutet „für“.
+p:ل:soll	لِـ / لْـ	soll				Vor einem Verb ohne Endvokal drückt لِـ eine Aufforderung aus: „soll“ oder „möge“. Mit Fatha (لَـ) bekräftigt es dagegen.
+p:ل:damit	لِـ	damit			لِيَعْلَمَ	Vor einem Verb bedeutet لِـ „damit“ oder „um zu“. Vor einem Nomen bedeutet es dagegen „für“.
 p:أَم	أَمْ	oder		in Fragen
 p:أَو	أَوْ	oder
 n:بَعْض	بَعْض	einige
 n:كُلّ	كُلّ	jeder
-p:إِنّ	إِنَّ	wahrlich				إِنَّ am Satzanfang bekräftigt: „wahrlich“. أَنَّ mitten im Satz heißt „dass“. Nach beiden steht das Nomen im Akkusativ.
-p:أَنّ	أَنَّ	dass				أَنَّ mitten im Satz heißt „dass“, danach ein Nomen oder Pronomen: أَنَّهُ – dass er. أَنْ ohne Schadda steht vor einem Verb.
+p:إِنّ	إِنَّ	wahrlich				إِنَّ steht meist am Satzanfang und bekräftigt die Aussage. Mit Fatha, also أَنَّ, steht es mitten im Satz und bedeutet „dass“.
+p:أَنّ	أَنَّ	dass				أَنَّ steht mitten im Satz und bedeutet „dass“. Danach folgt ein Nomen oder eine Endung, etwa in أَنَّهُ. أَنْ ohne Schadda steht dagegen vor einem Verb.
 p:كَأَنّ	كَأَنَّ	als ob
-p:لٰكِنّ	لَٰكِنَّ	aber				لَٰكِنَّ mit Schadda: danach ein Nomen im Akkusativ oder ein Pronomen. لَٰكِنْ ohne Schadda steht vor Verben und ganzen Sätzen.
-p:لٰكِن	لَٰكِنْ	aber				لَٰكِنْ ohne Schadda steht vor Verben und ganzen Sätzen. لَٰكِنَّ mit Schadda: danach ein Nomen im Akkusativ oder ein Pronomen.
+p:لٰكِنّ	لَٰكِنَّ	aber				Beide Formen bedeuten „aber“. Mit Schadda steht es vor einem Nomen oder einer Endung, ohne Schadda vor einem Verb oder einem ganzen Satz.
+p:لٰكِن	لَٰكِنْ	aber				Beide Formen bedeuten „aber“. Ohne Schadda steht es vor einem Verb oder einem ganzen Satz, mit Schadda vor einem Nomen oder einer Endung.
 p:لَعَلّ	لَعَلَّ	vielleicht
-p:أَن	أَنْ	dass				أَنْ steht vor einem Verb: „dass“, „zu“: أَنْ يَقُولَ – dass er sagt. أَنَّ mit Schadda steht vor einem Nomen oder Pronomen.
+p:أَن	أَنْ	dass				أَنْ ohne Schadda steht vor einem Verb und bedeutet „dass“ oder „zu“. أَنَّ mit Schadda steht vor einem Nomen oder einer Endung.
 v:عَسَى	عَسَى	vielleicht
 n:لَمّا	لَمَّا	als
 p:لَو	لَوْ	wenn		unwirklich
@@ -374,7 +374,7 @@ n:حَطَب	حَطَب	Brennholz
 n:جِيد	جِيد	Hals
 n:حَبْل	حَبْل	Strick
 n:مَسَد	مَسَد	Palmfaser
-v:جاءَ	جَاءَ	kommen	يَجِيءُ	جَاءَ بِـ – bringen		جَاءَ und أَتَى heißen beide „kommen“ und werden im Koran ähnlich gebraucht. Mit بِـ heißen beide „bringen“.
+v:جاءَ	جَاءَ	kommen	يَجِيءُ	جَاءَ بِـ – bringen		جَاءَ und أَتَى bedeuten beide „kommen“ und werden im Koran sehr ähnlich gebraucht. Mit بِـ bedeuten beide „bringen“.
 n:نَصْر	نَصْر	Sieg
 n:فَتْح	فَتْح	Sieg
 v:رَأَى	رَأَى	sehen	يَرَى	أَلَمْ تَرَ – siehst du nicht? · أَرَأَيْتَ – hast du gesehen?
@@ -503,9 +503,9 @@ v:ذاقُ	ذَاقَ	kosten	يَذُوقُ
 v:فازَ	فَازَ	gewinnen	يَفُوزُ
 v:قامَ	قَامَ	aufstehen	يَقُومُ
 v:ماتَ	مَاتَ	sterben	يَمُوتُ	Maṣdar مَوْت
-v:خافَ	خَافَ	fürchten	يَخَافُ	Maṣdar خَوْف		خَافَ ist allgemeine Furcht vor einer Gefahr. خَشِيَ ist Furcht aus Ehrfurcht, meist vor Allah.
-v:كادَ	كَادَ يَكَادُ	beinahe tun	يَكَادُ			Wurzel ك و د, Gegenwart mit a: يَكَادُ – „beinahe tun“. Nicht verwechseln mit كَادَ يَكِيدُ (Wurzel ك ي د) – „überlisten“.
-v:كِيدُ	كَادَ يَكِيدُ	überlisten	يَكِيدُ	Maṣdar كَيْد		Wurzel ك ي د, Gegenwart mit i: يَكِيدُ – „überlisten“, dazu كَيْد – List. كَادَ يَكَادُ (Wurzel ك و د) heißt „beinahe tun“.
+v:خافَ	خَافَ	fürchten	يَخَافُ	Maṣdar خَوْف		خَافَ ist die allgemeine Angst vor einer Gefahr. خَشِيَ ist Furcht aus Ehrfurcht, meist vor Allah.
+v:كادَ	كَادَ يَكَادُ	beinahe tun	يَكَادُ			Es gibt zwei Verben mit dieser Form. Dieses hat die Gegenwart يَكَادُ und bedeutet „beinahe tun“. Mit der Gegenwart يَكِيدُ bedeutet es „überlisten“.
+v:كِيدُ	كَادَ يَكِيدُ	überlisten	يَكِيدُ	Maṣdar كَيْد		Es gibt zwei Verben mit dieser Form. Dieses hat die Gegenwart يَكِيدُ und bedeutet „überlisten“. Mit der Gegenwart يَكَادُ bedeutet es „beinahe tun“.
 v:زادَ	زَادَ	vermehren	يَزِيدُ
 v:تَلَى	تَلَا	vortragen	يَتْلُو
 v:دَعا	دَعَا	rufen	يَدْعُو	Maṣdar دُعَاء
@@ -515,7 +515,7 @@ v:جَرَيْ	جَرَى	fließen	يَجْرِي
 v:جَزَى	جَزَى	vergelten	يَجْزِي
 v:قَضَى	قَضَى	bestimmen	يَقْضِي
 v:كَفَى	كَفَى	genügen	يَكْفِي
-v:خَشِيَ	خَشِيَ	Ehrfurcht haben	يَخْشَى			خَشِيَ ist Furcht aus Ehrfurcht und Wissen um die Größe des anderen, meist vor Allah. خَافَ ist allgemeine Furcht vor einer Gefahr.
+v:خَشِيَ	خَشِيَ	Ehrfurcht haben	يَخْشَى			خَشِيَ ist Furcht aus Ehrfurcht, weil man um die Größe des anderen weiß, meist vor Allah. خَافَ ist dagegen die allgemeine Angst vor einer Gefahr.
 v:رَضِيَ	رَضِيَ	zufrieden sein	يَرْضَى
 v:نَسِيَ	نَسِيَ	vergessen	يَنْسَى
 v:سَأَلَ	سَأَلَ	fragen	يَسْأَلُ
@@ -525,6 +525,6 @@ v:أَكَلَ	أَكَلَ	essen	يَأْكُلُ	Imperativ: كُلْ – iss!
 v:أَمَرَ	أَمَرَ	befehlen	يَأْمُرُ
 v:أَمِنَ	أَمِنَ	sicher sein	يَأْمَنُ
 v:أَبَى	أَبَى	sich weigern	يَأْبَى
-v:أَتَى	أَتَى	kommen	يَأْتِي	mit بِـ: bringen		أَتَى und جَاءَ heißen beide „kommen“ und werden im Koran ähnlich gebraucht. Mit بِـ heißen beide „bringen“.
+v:أَتَى	أَتَى	kommen	يَأْتِي	mit بِـ: bringen		أَتَى und جَاءَ bedeuten beide „kommen“ und werden im Koran sehr ähnlich gebraucht. Mit بِـ bedeuten beide „bringen“.
 v:شاءَ	شَاءَ	wollen	يَشَاءُ
 v:ساءَ	سَاءَ	schlecht sein	يَسُوءُ
