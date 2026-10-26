@@ -65,7 +65,7 @@ function grade(g){
   state.cov[dk]=quranCoverage();
   save();
   if(g===1){ round.again[id]=(round.again[id]||0)+1; round.q.splice(Math.min(round.q.length,round.i+4),0,id); }
-  round.done++; round.i++; round.flip=false; round.ex=false; round.enter=true;
+  round.done++; round.i++; round.flip=false; round.ex=false; round.info=false; round.enter=true;
   if(round.i>=round.q.length){ view="done"; render(); }
   else { renderRound(); window.scrollTo(0,0); }
 }
@@ -156,7 +156,8 @@ function renderRound(){
       <button class="icon cic l${round.ex?" on":""}" id="exT" aria-label="Vers zeigen">${VERSE_SVG}</button>
       <div class="wa"><p class="ar word">${esc(c.ar)}</p>${c.vh?`<p class="ar vh">${esc(c.vh)}</p>`:""}${tag}</div>
       <div class="wb"><span class="rule" aria-hidden="true"></span>
-      <div class="mean">${mix(c.de)}</div>
+      <div class="mean">${mix(c.de)}${c.in?`<button class="inf${round.info?" on":""}" id="infT" aria-label="Hinweis">i</button>`:""}</div>
+      ${c.in&&round.info?`<div class="infobox">${mix(c.in)}</div>`:""}
       ${c.no?`<div class="meta">${mix(c.no)}</div>`:""}
       ${meta?`<div class="meta">${meta}</div>`:""}
       ${round.ex?`<div class="ex"><p class="ar vtext">${verseHTML(vk,c.ex)}</p>
@@ -166,6 +167,7 @@ function renderRound(){
       <div class="acts"><button class="btn no" id="g1">Nicht gewusst</button><button class="btn" id="g3">Gewusst</button></div>`;
     $("#pW").onclick=e=>{ e.stopPropagation(); playWord(w.l); };
     const pv=$("#pV"); if(pv) pv.onclick=()=>playVerse(vk);
+    const it=$("#infT"); if(it) it.onclick=e=>{ e.stopPropagation(); round.info=!round.info; renderRound(); };
     $("#exT").onclick=e=>{ e.stopPropagation(); round.ex=!round.ex; renderRound(); };
     $("#g1").onclick=()=>grade(1); $("#g3").onclick=()=>grade(3);
   }
