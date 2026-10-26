@@ -11,6 +11,7 @@ function norm(){
   state.v=1;
   if(!state.cards||typeof state.cards!=="object") state.cards={};
   if(!state.days||typeof state.days!=="object") state.days={};
+  if(!state.cov||typeof state.cov!=="object") state.cov={};
 }
 norm();
 function save(){ state.updated=Date.now(); lsSet(KEY,JSON.stringify(state)); schedulePush(); }
@@ -78,6 +79,8 @@ function mergeStates(a,b){
   }
   const ad=a.days||{}, bd=b.days||{};
   for(const d of new Set([...Object.keys(ad),...Object.keys(bd)])) out.days[d]=Math.max(ad[d]||0,bd[d]||0);
+  out.cov={}; const av=a.cov||{}, bv=b.cov||{};
+  for(const d of new Set([...Object.keys(av),...Object.keys(bv)])) out.cov[d]=Math.max(av[d]||0,bv[d]||0);
   if(a.th||b.th) out.th=!a.th?b.th:!b.th?a.th:((b.th.t||0)>(a.th.t||0)?b.th:a.th);
   return out;
 }
@@ -129,7 +132,7 @@ async function syncFromRemote(){
     if(remote===null) return false;
     const before=JSON.stringify(state.cards), merged=mergeStates(state,remote);
     const changedHere=JSON.stringify(merged.cards)!==before;
-    const remoteBehind=JSON.stringify(merged.cards)!==JSON.stringify(remote.cards||{})||JSON.stringify(merged.days)!==JSON.stringify(remote.days||{})||JSON.stringify(merged.th||null)!==JSON.stringify(remote.th||null);
+    const remoteBehind=JSON.stringify(merged.cards)!==JSON.stringify(remote.cards||{})||JSON.stringify(merged.days)!==JSON.stringify(remote.days||{})||JSON.stringify(merged.cov)!==JSON.stringify(remote.cov||{})||JSON.stringify(merged.th||null)!==JSON.stringify(remote.th||null);
     state=merged; norm(); lsSet(KEY,JSON.stringify(state));
     if(remoteBehind) await push(); else { syncStatus="ok"; lastSync=new Date(); }
     return changedHere;

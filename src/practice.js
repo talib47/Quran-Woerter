@@ -62,6 +62,7 @@ function grade(g){
   (round.hist=round.hist||[]).push({i:round.i, id, card:state.cards[id]?JSON.parse(JSON.stringify(state.cards[id])):undefined, dk, day:state.days[dk], qlen:round.q.length, q:round.q.slice(), again:Object.assign({},round.again), done:round.done});
   state.cards[id]=schedule(state.cards[id],g,today,true);
   state.days[dk]=(state.days[dk]||0)+1;
+  state.cov[dk]=quranCoverage();
   save();
   if(g===1){ round.again[id]=(round.again[id]||0)+1; round.q.splice(Math.min(round.q.length,round.i+4),0,id); }
   round.done++; round.i++; round.flip=false; round.ex=false; round.enter=true;
@@ -78,6 +79,33 @@ function undoCard(){
   save(); renderRound(); window.scrollTo(0,0);
 }
 /* ================= Ansichten ================= */
+/* Wochenrückblick: geübte Karten je Tag, Koran-Anteil am Wochenanfang und -ende. Pfeile blättern wochenweise. */
+let weekOff=0;
+function keyOf(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function weekHTML(){
+  const today=new Date(Date.now()-3*36e5); today.setHours(12,0,0,0);
+  const keys=Object.keys(state.days).filter(k=>state.days[k]>0).sort();
+  const first=keys.length?new Date(keys[0]+"T12:00:00"):today;
+  const maxOff=Math.max(0,Math.floor((today-first)/864e5/7));
+  weekOff=Math.min(Math.max(0,weekOff),maxOff);
+  const days=[]; for(let i=6;i>=0;i--){ const d=new Date(today); d.setDate(d.getDate()-weekOff*7-i); days.push(d); }
+  const vals=days.map(d=>state.days[keyOf(d)]||0), mx=Math.max(1,...vals), sum=vals.reduce((a,b)=>a+b,0);
+  const covAt=d=>{ const k=keyOf(d); let v=0; for(const x of Object.keys(state.cov).sort()){ if(x<=k) v=state.cov[x]; else break; } return v; };
+  const before=new Date(days[0]); before.setDate(before.getDate()-1);
+  const c0=covAt(before), c1=covAt(days[6]);
+  const wd=["So","Mo","Di","Mi","Do","Fr","Sa"], fmt=d=>String(d.getDate()).padStart(2,"0")+"."+String(d.getMonth()+1).padStart(2,"0")+".";
+  const cols=days.map((d,i)=>`<div class="wcol${weekOff===0&&i===6?" wtoday":""}"><span class="wn">${vals[i]||""}</span><span class="wb2"><i style="height:${vals[i]?Math.max(4,Math.round(vals[i]/mx*100)):0}%"></i></span><span class="wd">${wd[d.getDay()]}</span><span class="wdt">${fmt(d)}</span></div>`).join("");
+  return `<div class="week"><div class="whead"><button class="icon" id="wPrev" aria-label="Woche zurück"${weekOff>=maxOff?" disabled":""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <span class="wtitle">${fmt(days[0])} – ${fmt(days[6])}</span>
+    <button class="icon" id="wNext" aria-label="Woche vor"${weekOff===0?" disabled":""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+    <div class="wchart">${cols}</div>
+    <p class="line" style="margin-top:8px;font-size:.85rem">${sum} ${sum===1?"Karte":"Karten"} · Koran ${pct(c0)} → <b>${pct(c1)}</b></p></div>`;
+}
+function bindWeek(){
+  const a=$("#wPrev"), b=$("#wNext");
+  if(a) a.onclick=()=>{ weekOff++; $("#week").innerHTML=weekHTML(); bindWeek(); };
+  if(b) b.onclick=()=>{ weekOff--; $("#week").innerHTML=weekHTML(); bindWeek(); };
+}
 function renderHome(){
   const cov=quranCoverage(), covMax=DATA.cov.reduce((a,g)=>a+g[0],0)/DATA.total;
   const due=dueCards().length, fresh=freshCards().length, today=state.days[dayKey()]||0;
@@ -96,9 +124,11 @@ function renderHome(){
     <div class="cov"><p class="line">Koran: Du kennst <b>${pct(cov)}</b> aller Wörter</p>
       <div class="covbar"><i style="width:${(cov*100).toFixed(1)}%"></i><s style="left:${(covMax*100).toFixed(1)}%"></s></div>
       <p class="line" style="margin-top:6px;font-size:.8rem">Ziel mit allen Karten: ${pct(covMax)}</p></div>
+    <div id="week">${weekHTML()}</div>
     ${syncBox()}
     <p class="muted" style="font-size:.75rem;margin-top:18px">Stand __STAND__</p>`;
   const g=$("#go"); if(g) g.onclick=startRound;
+  bindWeek();
   bindSync();
 }
 function verseHTML(vk,hiWord){
