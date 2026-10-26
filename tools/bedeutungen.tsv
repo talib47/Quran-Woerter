@@ -1,4 +1,4 @@
-# Karten: Schlüssel (aus dem Korpus) · Anzeige · Bedeutung · Gegenwart (Verben) · Notiz
+# Karten: Schlüssel (aus dem Korpus) · Anzeige · Bedeutung · Gegenwart (Verben) · Notiz · Beispiel vorne (nur wenn die Anzeige sonst mehrdeutig ist)
 # Schlüssel: p: Partikel/Vorsilbe, n: Nomen, v: Verb, s: Endung, pr: freies Pronomen
 p:ب	بِـ	mit
 n:اسْم	اِسْم	Name		Pl. أَسْمَاء
@@ -7,7 +7,7 @@ p:ال	ٱلْـ	der, die, das
 n:رَحْمٰن	رَحْمٰن	der Allerbarmer
 n:رَحِيم	رَحِيم	barmherzig
 n:حَمْد	حَمْد	Lob
-p:ل	لِـ	für
+p:ل	لِـ	für			لِلَّهِ
 n:رَبّ	رَبّ	Herr
 n:عالَم	عَالَم	Welt		Pl. عَالَمُون / عَالَمِين – die Welten, alle Geschöpfe
 n:مالِك	مَالِك	Herrscher
@@ -15,7 +15,7 @@ n:يَوْم	يَوْم	Tag		Pl. أَيَّام
 n:دِين	دِين	Religion		auch: Gericht · يَوْمُ ٱلدِّين – Tag des Gerichts
 pr:إِيّا	إِيَّا	allein		إِيَّاكَ – dich allein
 v:عَبَدَ	عَبَدَ	dienen	يَعْبُدُ	Maṣdar عِبَادَة
-p:و	وَ	und
+p:و	وَ	und			وَقَالَ
 v:اسْتَعِينُ	اِسْتَعَانَ	um Hilfe bitten	يَسْتَعِينُ	Stamm X zur Wurzel ع و ن (Hilfe)
 v:هَدَى	هَدَى	rechtleiten	يَهْدِي	Imperativ: اِهْدِ – leite!
 s:1P	ـنَا	unser		am Verb: uns
@@ -43,7 +43,7 @@ p:فِي	فِي	in
 n:صَدْر	صَدْر	Brust		Pl. صُدُور
 n:جِنَّة	جِنَّة	Dschinn
 n:فَلَق	فَلَق	Tagesanbruch
-n:ما	مَا	was
+n:ما	مَا	was			مَا تَعْبُدُونَ
 v:خَلَقَ	خَلَقَ	erschaffen	يَخْلُقُ	Maṣdar خَلْق
 n:غاسِق	غَاسِق	finstere Nacht		aktives Partizip zu غَسَقَ – finster werden
 n:إِذا	إِذَا	wenn
@@ -72,7 +72,7 @@ n:الَّذِي:pl	ٱلَّذِينَ	diejenigen, die
 p:إِلّا	إِلَّا	außer		nach Verneinung: nur
 p:كَلّا	كَلَّا	keineswegs!
 p:لَن	لَنْ	wird nicht		verneint die Zukunft
-p:ما	مَا	nicht		meist Vergangenheit
+p:ما	مَا	nicht		meist Vergangenheit	مَا أَغْنَىٰ
 v:لَيْسَ	لَيْسَ	ist nicht		f. لَيْسَتْ
 p:بَلَى	بَلَى	doch!		Antwort auf verneinte Frage
 n:دُون	دُونَ	statt		مِنْ دُونِ ٱللَّه – statt Allah
@@ -143,7 +143,7 @@ p:ك	كَـ	wie
 p:إِلَى	إِلَى	zu
 p:حَتَّى	حَتَّى	bis
 n:مَع	مَعَ	mit
-p:و:schwur	وَ	bei!		Schwur
+p:و:schwur	وَ	bei!		Schwur	وَٱلْعَصْرِ
 p:ت	تَـ	bei!		Schwur
 p:ما:x	ـمَا	angehängtes مَا		إِنَّمَا · كُلَّمَا · أَيْنَمَا
 p:أَمّا	أَمَّا	was … betrifft
@@ -155,7 +155,7 @@ p:س	سَـ	wird		nahe Zukunft
 p:سَوْف	سَوْفَ	wird		fernere Zukunft
 p:ل:betont	لَـ	wahrlich
 p:ل:soll	لِـ / لْـ	soll
-p:ل:damit	لِـ	damit
+p:ل:damit	لِـ	damit			لِيَعْلَمَ
 p:أَم	أَمْ	oder		in Fragen
 p:أَو	أَوْ	oder
 n:بَعْض	بَعْض	einige

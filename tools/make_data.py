@@ -212,9 +212,9 @@ def main():
 
     meanings = {}
     for row in read_tsv('bedeutungen.tsv'):
-        row += [''] * (5 - len(row))
-        key, shown, de, praes, note = row[:5]
-        meanings[nfc(key)] = {'ar': shown, 'de': de, 'pr': praes, 'no': note}
+        row += [''] * (6 - len(row))
+        key, shown, de, praes, note, hint = row[:6]
+        meanings[nfc(key)] = {'ar': shown, 'de': de, 'pr': praes, 'no': note, 'vh': hint}
     glosses = {r[0]: r[1] for r in read_tsv('glossen.tsv')}
 
     # Schlüssel, Häufigkeit und Wurzel für den ganzen Koran
@@ -336,6 +336,8 @@ def main():
             c['pr'] = m['pr']
         if m['no']:
             c['no'] = m['no']
+        if m['vh']:
+            c['vh'] = m['vh']
         if k.startswith('v:'):
             c['st'] = ROMAN.get(inf['vf'] or 1, '?')
         cards.append(c)
