@@ -27,7 +27,7 @@ p:عَلَى	عَلَى	auf
 s:3MP	ـهُمْ	ihr		Plural · am Verb: sie
 n:غَيْر	غَيْر	anders als
 n:مَغْضُوب	مَغْضُوب	dem gezürnt wird		passives Partizip zu غَضِبَ – zürnen
-p:لا	لَا	nicht				لَا verneint die Gegenwart und Nomen: لَا رَيْبَ – kein Zweifel. Vergangenheit: لَمْ oder مَا, Zukunft: لَنْ.
+p:لا	لَا	nicht				لَا verneint die Gegenwart und Nomen: لَا رَيْبَ – kein Zweifel. Vergangenheit: لَمْ oder مَا, Zukunft: لَنْ. Nicht verwechseln mit لَـ (Fatha, ohne Alif, am Wort angehängt) – „wahrlich“.
 n:ضالّ	ضَالّ	irregehend		aktives Partizip zu ضَلَّ – irregehen
 v:قالَ	قَالَ	sagen	يَقُولُ	Imperativ: قُلْ – sag!
 v:عُذْ	عَاذَ	Zuflucht suchen	يَعُوذُ	mit بِـ – bei
@@ -153,8 +153,8 @@ n:كُلَّما	كُلَّمَا	jedes Mal, wenn
 p:قَد	قَدْ	schon
 p:س	سَـ	wird		nahe Zukunft		سَـ hängt direkt am Verb und meint die nahe Zukunft: سَيَعْلَمُونَ – sie werden wissen. سَوْفَ steht frei davor, eher für die fernere Zukunft.
 p:سَوْف	سَوْفَ	wird		fernere Zukunft		سَوْفَ steht frei vor dem Verb, eher für die fernere Zukunft: سَوْفَ تَعْلَمُونَ – ihr werdet wissen. سَـ hängt dagegen direkt am Verb.
-p:ل:betont	لَـ	wahrlich
-p:ل:soll	لِـ / لْـ	soll
+p:ل:betont	لَـ	wahrlich				لَـ mit Fatha hängt direkt am Wort und bekräftigt: „wahrlich“: لَقَدْ، لَيَقُولُنَّ. Nicht verwechseln mit لَا (eigenes Wort mit Alif) – „nicht“ – und لِـ mit Kasra – „für“.
+p:ل:soll	لِـ / لْـ	soll				لِـ / لْـ vor einem Verb ohne Endvokal: „soll“: فَلْيَعْبُدُوا – so sollen sie dienen. لَـ mit Fatha bekräftigt dagegen: „wahrlich“.
 p:ل:damit	لِـ	damit			لِيَعْلَمَ	لِـ vor einem Verb in der Gegenwart: „damit“, „um zu“: لِيَعْلَمَ – damit er weiß. Vor einem Nomen heißt es „für“.
 p:أَم	أَمْ	oder		in Fragen
 p:أَو	أَوْ	oder
