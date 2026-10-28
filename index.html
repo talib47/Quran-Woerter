@@ -553,7 +553,7 @@ function renderHome(){
       <p class="line" style="margin-top:6px;font-size:.8rem">Ziel mit allen Karten: ${pct(covMax)}</p></div>
     <div id="week">${weekHTML()}</div>
     ${syncBox()}
-    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 26.10. 02:37</p>`;
+    <p class="muted" style="font-size:.75rem;margin-top:18px">Stand 28.10. 15:19</p>`;
   const g=$("#go"); if(g) g.onclick=startRound;
   bindWeek();
   bindSync();
@@ -758,7 +758,7 @@ if(ghToken) syncFromRemote().then(changed=>{ if(view!=="round") render(); });
    GitHub Pages liefert die Seite bis zu 10 Minuten aus dem Zwischenspeicher, und die Home-Bildschirm-App
    hält sie noch länger. Deshalb fragt die App beim Öffnen und beim Zurückkehren die aktuelle Fassung ab
    (am Zwischenspeicher vorbei) und lädt sich neu, wenn es eine neuere gibt. */
-const BUILD="20261026023754";
+const BUILD="20261028151929";
 async function checkUpdate(){
   if(view==="round") return;
   try{
@@ -772,6 +772,9 @@ async function checkUpdate(){
 }
 checkUpdate();
 document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible") checkUpdate(); });
+
+/* Offline-Modus: App-Dateien im Gerät zwischenspeichern (sw.js). Der Lernstand liegt sowieso im Gerät. */
+if("serviceWorker" in navigator){ window.addEventListener("load", ()=>navigator.serviceWorker.register("sw.js").catch(()=>{})); }
 
 </script>
 </body>

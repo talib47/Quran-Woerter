@@ -58,3 +58,8 @@ Amiri Quran setzt Zeichen bis 1,42 em über und 0,76 em unter die Grundlinie (ge
 - Deutsche Übersetzung: A. S. F. Bubenheim und N. Elyas, [quranenc.com](https://quranenc.com), über [fawazahmed0/quran-api](https://github.com/fawazahmed0/quran-api).
 - Rezitation je Vers: Mahmoud Khalil Al-Husary ([everyayah.com](https://everyayah.com)); je Wort: quran.com.
 - Deutsche Bedeutungen und Glossen: eigene Texte, abgeglichen mit „80 % der qur’aanischen Wörter“ (understandquran.com).
+
+
+## Offline
+
+`sw.js` speichert die App-Dateien im Gerät, die App startet auch ohne Internet (Netz höchstens 3 Sekunden, sonst die gespeicherte Kopie). Registrierung am Ende von `src/start.js`. Alle Apps teilen sich `talib47.github.io`: Jede App löscht nur Caches mit eigenem Präfix. Der Lernstand liegt immer zuerst im Gerät und wird abgeglichen, sobald wieder Internet da ist (neuerer Stand gewinnt als Ganzes).

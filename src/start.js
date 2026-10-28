@@ -33,3 +33,6 @@ async function checkUpdate(){
 }
 checkUpdate();
 document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible") checkUpdate(); });
+
+/* Offline-Modus: App-Dateien im Gerät zwischenspeichern (sw.js). Der Lernstand liegt sowieso im Gerät. */
+if("serviceWorker" in navigator){ window.addEventListener("load", ()=>navigator.serviceWorker.register("sw.js").catch(()=>{})); }
